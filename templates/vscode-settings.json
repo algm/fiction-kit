@@ -1,0 +1,13 @@
+{
+    "chat.promptFilesRecommendations": {
+        "fiction.principles": true,
+        "fiction.premise": true,
+        "fiction.outline": true,
+        "fiction.scenes": true,
+        "fiction.draft": true
+    },
+    "chat.tools.terminal.autoApprove": {
+        ".fiction/scripts/bash/": true,
+        ".fiction/scripts/powershell/": true
+    }
+}
