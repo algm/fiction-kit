@@ -3,11 +3,11 @@
 
 <#
 .SYNOPSIS
-    Build Spec Kit template release archives for each supported AI assistant and script type.
+    Build Fiction Kit template release archives for each supported AI assistant and script type.
 
 .DESCRIPTION
     create-release-packages.ps1 (workflow-local)
-    Build Spec Kit template release archives for each supported AI assistant and script type.
+    Build Fiction Kit template release archives for each supported AI assistant and script type.
     
 .PARAMETER Version
     Version string with leading 'v' (e.g., v0.2.0)
@@ -342,7 +342,7 @@ function Build-Variant {
     }
     
     # Create zip archive
-    $zipFile = Join-Path $GenReleasesDir "spec-kit-template-${Agent}-${Script}-${Version}.zip"
+    $zipFile = Join-Path $GenReleasesDir "fiction-kit-template-${Agent}-${Script}-${Version}.zip"
     Compress-Archive -Path "$baseDir/*" -DestinationPath $zipFile -Force
     Write-Host "Created $zipFile"
 }
@@ -411,6 +411,6 @@ foreach ($agent in $AgentList) {
 }
 
 Write-Host "`nArchives in ${GenReleasesDir}:"
-Get-ChildItem -Path $GenReleasesDir -Filter "spec-kit-template-*-${Version}.zip" | ForEach-Object {
+Get-ChildItem -Path $GenReleasesDir -Filter "fiction-kit-template-*-${Version}.zip" | ForEach-Object {
     Write-Host "  $($_.Name)"
 }
