@@ -183,8 +183,8 @@ PLANNING ───────────────────────�
   /fiction.research      Gather authentic details
 
 WRITING ────────────────────────────────────────────────────────────────>
-  /fiction.chapter       Generate complete chapter drafts
-  /fiction.draft         Write prose from scenes
+  /fiction.chapter       Generate a single focused chapter (best for quality)
+  /fiction.draft         Batch-process all chapters sequentially (full draft)
   /fiction.dialogue      Craft conversations
 
 REFINEMENT ─────────────────────────────────────────────────────────────>
@@ -251,7 +251,7 @@ Fiction Kit supports writing in any language. During initialization, select your
 | `/fiction.develop` | Clarify ambiguities, deepen story details |
 | `/fiction.outline` | Create story structure, acts, chapters, beats |
 | `/fiction.scenes` | Generate scene breakdown per chapter |
-| `/fiction.draft` | Write prose from scene list |
+| `/fiction.draft` | Batch-process all scenes/chapters into a complete draft |
 | `/fiction.review` | Analyze for consistency, plot holes, arc issues |
 | `/fiction.checklist` | Quality validation checklists |
 
@@ -262,7 +262,7 @@ Fiction Kit supports writing in any language. During initialization, select your
 | `/fiction.world` | Worldbuilding: settings, locations, rules, history |
 | `/fiction.character` | Character profiles, backstories, motivations |
 | `/fiction.chat` | Interactive brainstorming or roleplay as characters |
-| `/fiction.chapter` | Generate complete chapter prose |
+| `/fiction.chapter` | Generate a single focused chapter with quality checks |
 | `/fiction.refine` | Iterate content: fix consistency, strengthen plot |
 | `/fiction.synopsis` | Generate synopsis/blurb for pitching |
 | `/fiction.dialogue` | Generate or improve dialogue for scenes |
