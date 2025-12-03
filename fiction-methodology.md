@@ -95,9 +95,30 @@ Break chapters into actionable scenes:
 
 With structure in place, draft with confidence:
 
-**Chapter Drafting (`/fiction.draft`, `/fiction.chapter`)**
+**Chapter Drafting**
 
-Write prose that adheres to:
+Fiction Kit offers two complementary drafting commands:
+
+| Command | Use When | Output |
+|---------|----------|--------|
+| `/fiction.chapter` | You want to focus on **one chapter at a time** with deep quality checks | Single polished chapter |
+| `/fiction.draft` | You want to **batch-process all scenes** into a complete first draft | All chapters sequentially |
+
+**`/fiction.chapter`** (Focused Writing):
+- Generates a single chapter with pre-writing checklist
+- Loads deep context for POV character, setting, and continuity
+- Includes quality checks (word count, scene coverage, voice consistency)
+- Suggests `/fiction.refine` or `/fiction.review` as next steps
+- Best for: iterative quality-focused writing, revising specific chapters
+
+**`/fiction.draft`** (Batch Processing):
+- Processes all scenes in scenes.md sequentially
+- Writes chapter-by-chapter, scene-by-scene
+- Verifies checklists before starting
+- Tracks progress and word counts across entire manuscript
+- Best for: NaNoWriMo-style sprints, completing first drafts quickly
+
+Both commands write prose that adheres to:
 - Established voice and style
 - Character voices from profiles
 - World rules and details
