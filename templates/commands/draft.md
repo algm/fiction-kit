@@ -77,14 +77,23 @@ Draft prose **scene by scene**, creating individual prose files in `drafts/scene
 
 4. **Scene-by-Scene Drafting Setup**:
    - Create STORY_DIR/drafts/scenes/ directory if it doesn't exist
-   - For each scene being drafted, create individual file: `drafts/scenes/s[###]-[scene-name].md`
+   - **For each scene being drafted**:
+     - Determine the chapter number (NNN) from scene metadata (zero-padded: 001, 002, etc.)
+     - Determine the scene number within the chapter (MMM) by counting existing scenes in that chapter directory (zero-padded: 001, 002, etc.)
+     - Create chapter directory: `drafts/scenes/c[NNN]/` (e.g., `c001/`, `c002/`, `c025/`)
+    - Create individual scene file: `drafts/scenes/c[NNN]/c[NNN]s[MMM].md`
+      - Format: `c001s001.md` (Chapter 1, Scene 1)
+      - Format: `c002s001.md` (Chapter 2, Scene 1)
+      - Format: `c025s002.md` (Chapter 25, Scene 2)
    - Use `.fiction/templates/scene-prose-template.md` as structure for each scene file
    - Track all drafted scenes in `drafts/prose-index.md`
 
 5. Parse scenes structure and extract:
    - **Scenes**: Load from scenes/ files or scenes.md
    - **For each scene, extract**:
-     - Scene ID (S###)
+     - Chapter number (NNN) - zero-padded to 3 digits (001, 002, etc.)
+     - Scene number within chapter (MMM) - zero-padded to 3 digits (001, 002, etc.)
+     - Scene ID from planning (S###) - for reference
      - Scene name
      - POV character
      - Location, time
@@ -107,7 +116,13 @@ Draft prose **scene by scene**, creating individual prose files in `drafts/scene
       - Review principles.md for voice/style
    
    b. **Draft prose**:
-      - Create `drafts/scenes/s[###]-[scene-name].md` from template
+      - Determine chapter number (NNN) from scene metadata (zero-padded: 001, 002, etc.)
+      - Determine scene number within chapter (MMM) by counting existing scenes in that chapter directory (zero-padded: 001, 002, etc.)
+      - Create chapter directory if it doesn't exist: `drafts/scenes/c[NNN]/` (e.g., `c001/`, `c002/`, `c025/`)
+      - Create scene file: `drafts/scenes/c[NNN]/c[NNN]s[MMM].md` from template
+        - Example: `c001s001.md` for first scene of chapter 1
+        - Example: `c002s001.md` for first scene of chapter 2
+        - Example: `c025s002.md` for second scene of chapter 25
       - Fill in scene metadata section (chapter, POV, location, etc.)
       - List all references consulted in References Consulted section
       - **Write the prose** following:
@@ -128,6 +143,19 @@ Draft prose **scene by scene**, creating individual prose files in `drafts/scene
         - Set last updated date
       - Mark scene as complete in scenes file (check the box)
 
+   **Inserting or moving scenes/chapters**:
+   - When inserting a scene in a chapter:
+     - Choose the correct chapter directory `c[NNN]/`
+     - Assign the next available `s[MMM]` within that chapter (zero-padded)
+     - Rename files to keep `c[NNN]s[MMM].md` contiguous if you resequence
+   - When moving a scene between chapters:
+     - Move the file to the new `c[NNN]/` directory and renumber `s[MMM]`
+     - Update `drafts/prose-index.md` with the new path and status
+     - Update planning in scenes.md or scenes/chXX-XX.md to reflect the new order
+   - After renumbering or moving scenes:
+     - Re-run `make chapters` (and `make book` if needed) to rebuild chapter/book outputs
+     - Verify links/paths in `drafts/prose-index.md` are consistent
+
 7. **Drafting execution rules**:
    
    **Scene Selection**:
@@ -142,7 +170,10 @@ Draft prose **scene by scene**, creating individual prose files in `drafts/scene
    - Research: Factual accuracy
    
    **Prose Writing**:
-   - Write in individual scene file: `drafts/scenes/s###-name.md`
+   - Determine chapter number (NNN) and scene number within chapter (MMM)
+   - Determine chapter directory: `drafts/scenes/c[NNN]/` (e.g., `c001/`, `c002/`, `c025/`)
+   - Write in individual scene file: `drafts/scenes/c[NNN]/c[NNN]s[MMM].md`
+     - Format: `c001s001.md`, `c002s001.md`, `c025s002.md`, etc.
    - Follow scene-prose-template.md structure
    - Use scene summary and emotional beat as guide
    - Apply Writing Language and Writing Style
@@ -199,22 +230,31 @@ Draft prose **scene by scene**, creating individual prose files in `drafts/scene
 
 ## Output Format
 
-Each chapter file (drafts/chapter-XX.md) should include:
+Each scene file should be created in a chapter-specific directory:
 
-```markdown
-# Chapter X: [Title]
-
-[Prose content]
-
----
-<!-- Draft Metadata
-Word Count: XXXX
-Target: XXXX
-Status: Draft
-Scenes: S001, S002, S003
-Last Updated: YYYY-MM-DD
--->
 ```
+drafts/scenes/
+├── c001/
+│   ├── c001s001.md
+│   └── c001s002.md
+├── c002/
+│   ├── c002s001.md
+│   └── c002s002.md
+└── ...
+```
+
+**Directory Naming**: Use format `c[NNN]` where:
+- `NNN` is zero-padded chapter number (001, 002, 003, etc.)
+- Examples: `c001/`, `c002/`, `c025/`
+
+**Scene File Naming**: Use format `c[NNN]s[MMM].md` where:
+- `NNN` is zero-padded chapter number (001, 002, 003, etc.)
+- `MMM` is zero-padded scene number within the chapter (001, 002, 003, etc.)
+- Examples: `c001s001.md` (Chapter 1, Scene 1), `c002s001.md` (Chapter 2, Scene 1), `c025s002.md` (Chapter 25, Scene 2)
+
+**Consolidation**: After drafting scenes, use the Makefile to consolidate:
+- `make chapters` - Consolidates scenes into chapter files in `drafts/chapters/`
+- `make book` - Consolidates all chapters into `drafts/libro.md`
 
 Note: This command assumes a complete scene breakdown exists. If scenes are incomplete or missing, suggest running `/fiction.scenes` first.
 

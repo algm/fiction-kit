@@ -45,7 +45,7 @@ This table shows where each type of information lives in your story project. **E
 | Scene type distribution | `scenes/index.md` | Pacing Analysis section | |
 | **Prose & Drafts** |
 | Drafted prose index | `drafts/prose-index.md` | Full file | Maps scenes to prose files |
-| Individual scene prose | `drafts/scenes/s[###]-[scene-name].md` | Full file | One file per scene |
+| Individual scene prose | `drafts/scenes/c[NNN]/c[NNN]s[MMM].md` | Full file | One file per scene, organized by chapter |
 | Chapter assemblies | `drafts/chapters/chapter-[XX].md` | Full file | Assembled from scenes |
 | Prose references used | `drafts/prose-index.md` | References column | What sources informed each scene |
 | **Research & References** |
@@ -136,9 +136,13 @@ story-project/
 │   └── ...
 ├── drafts/
 │   ├── prose-index.md                 # Index mapping scenes to prose
-│   ├── scenes/                        # Individual scene prose
-│   │   ├── s001-opening.md
-│   │   ├── s002-inciting-incident.md
+│   ├── scenes/                        # Individual scene prose organized by chapter
+│   │   ├── c001/                      # Chapter 1 directory
+│   │   │   ├── c001s001.md
+│   │   │   └── c001s002.md
+│   │   ├── c002/                      # Chapter 2 directory
+│   │   │   ├── c002s001.md
+│   │   │   └── ...
 │   │   └── ...
 │   └── chapters/                      # Assembled chapters
 │       ├── chapter-01.md
@@ -191,7 +195,7 @@ story-project/
 
 **When writing prose:**
 
-1. Create individual scene files in `drafts/scenes/s[###]-[scene-name].md`
+1. Create individual scene files in `drafts/scenes/c[NNN]/c[NNN]s[MMM].md` (e.g., `c001s001.md`)
 2. Update `drafts/prose-index.md` with:
    - Scene ID
    - Prose file path
@@ -252,7 +256,7 @@ story-project/
 ### "Where is the prose for Scene 15?"
 
 → `drafts/prose-index.md` to find the prose file path
-→ Then `drafts/scenes/s015-[scene-name].md` for the actual prose
+→ Then `drafts/scenes/c[NNN]/c[NNN]s[MMM].md` for the actual prose (format: c001s001.md, c002s001.md, etc.)
 
 ### "What references were used for Scene 15?"
 

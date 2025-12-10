@@ -123,6 +123,19 @@ Generate scene breakdowns that serve as the **single source of truth** for scene
    - Emotional arc summary
    - Suggested drafting approach
 
+### Inserting or moving scenes/chapters
+- **When inserting scenes**:
+  - Add the scene to the correct chapter section in scenes.md or scenes/chXX-XX.md
+  - Ensure scene IDs remain unique and ordered (S###) in planning
+  - When drafted, place prose in `drafts/scenes/c[NNN]/c[NNN]s[MMM].md` with contiguous numbering per chapter
+- **When moving scenes between chapters**:
+  - Update the planning file to reflect the new chapter assignment and order
+  - When prose exists, move the corresponding file to the new `c[NNN]/` directory and renumber `s[MMM]` within that chapter
+  - Update `drafts/prose-index.md` with the new path and status
+- **After any insert/move**:
+  - Re-run `make chapters` (and `make book` if needed) to rebuild assembled outputs
+  - Verify links and paths in `drafts/prose-index.md` stay consistent
+
 Context for scene generation: {ARGS}
 
 The scenes.md should be immediately usable - each scene must be specific enough that the writer (human or AI) can draft it without additional context.

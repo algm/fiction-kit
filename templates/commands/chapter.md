@@ -108,24 +108,33 @@ Before generating prose:
 
 **CRITICAL**: ALL prose in the specified **Writing Language**.
 
-**Structure**:
+**Structure** (write scene by scene):
+- Each scene is written to: `drafts/scenes/c[NNN]/c[NNN]s[MMM].md`
+  - Format: `c001s001.md`, `c002s001.md`, `c025s002.md`, etc.
+- Each scene file follows `.fiction/templates/scene-prose-template.md` structure
+- Scenes are written individually, then consolidated using Makefile
+
+**Scene File Format**:
 ```markdown
-# Chapter [N]: [Title]
+# Scene c[NNN]s[MMM]: [Scene Name]
 
-[Opening scene prose]
-
-[Scene transitions and subsequent scenes]
-
-[Chapter-ending hook]
+**Chapter**: [N]
+**POV**: [Character]
+**Location**: [Location Name]
+**Time**: [Time of day / Timeline marker]
 
 ---
-<!-- Chapter Metadata
-Word Count: XXXX / [Target]
-POV: [Character]
-Scenes: [S001, S002, S003]
-Status: First Draft
-Generated: [DATE]
--->
+
+## Prose
+
+[Scene prose content - opening, transitions, ending hook]
+
+---
+
+## Scene Metadata
+- **Word Count**: [X words]
+- **Status**: Draft
+- **Generated**: [DATE]
 ```
 
 **Prose Generation Rules**:
@@ -168,20 +177,54 @@ Generated: [DATE]
 ### 7. Chapter Quality Checks
 
 After generation, verify:
-- [ ] Word count within target range
+- [ ] All scene files created in correct chapter directory: `drafts/scenes/c[NNN]/`
+- [ ] Word count within target range (sum of all scenes)
 - [ ] All scenes from scenes.md are included
 - [ ] Chapter goal is achieved
 - [ ] Emotional arc follows plan
-- [ ] POV is consistent
-- [ ] Tense is consistent
+- [ ] POV is consistent across all scenes
+- [ ] Tense is consistent across all scenes
 - [ ] Character voices are distinct
 - [ ] Chapter ends with forward momentum
+- [ ] Scene transitions are smooth
 
 ### 8. Write Output
 
-Save to: `STORY_DIR/drafts/chapter-[N].md`
+**Scene-by-scene structure**: Write each scene to its chapter directory:
+- Determine chapter number (NNN) from chapter metadata (zero-padded: 001, 002, etc.)
+- Determine scene number within chapter (MMM) by counting existing scenes in that chapter directory (zero-padded: 001, 002, etc.)
+- Create chapter directory if it doesn't exist: `drafts/scenes/c[NNN]/` (e.g., `c001/`, `c002/`, `c025/`)
+- Save each scene to: `drafts/scenes/c[NNN]/c[NNN]s[MMM].md`
+  - Format: `c001s001.md` (Chapter 1, Scene 1)
+  - Format: `c002s001.md` (Chapter 2, Scene 1)
+  - Format: `c025s002.md` (Chapter 25, Scene 2)
+- Use `.fiction/templates/scene-prose-template.md` as structure for each scene file
+
+**Directory Naming**: Use format `c[NNN]` where:
+- `NNN` is zero-padded chapter number (001, 002, 003, etc.)
+
+**Scene File Naming**: Use format `c[NNN]s[MMM].md` where:
+- `NNN` is zero-padded chapter number (001, 002, 003, etc.)
+- `MMM` is zero-padded scene number within the chapter (001, 002, 003, etc.)
+
+**Consolidation**: After writing scenes, use the Makefile to consolidate:
+- `make chapters` - Consolidates scenes into chapter files in `drafts/chapters/chapter-[NN]_[name].md`
+- `make book` - Consolidates all chapters into `drafts/book.md`
 
 Update scenes: Mark chapter scenes as drafted [X] in the appropriate scenes file (scenes.md or scenes/chXX-XX.md)
+
+**Inserting or moving scenes/chapters**:
+- When inserting scenes:
+  - Use the existing chapter directory `c[NNN]/`
+  - Assign the next available `s[MMM]` within that chapter (zero-padded)
+  - If resequencing, rename scene files to keep numbering contiguous
+- When moving scenes between chapters:
+  - Move to the destination `c[NNN]/`, renumber `s[MMM]`, and update scene metadata
+  - Update `drafts/prose-index.md` with the new path and status
+  - Update planning files (scenes.md or scenes/chXX-XX.md) to reflect the new order
+- After any renumber/move:
+  - Re-run `make chapters` (and `make book` if needed) to rebuild outputs
+  - Verify paths and references in `drafts/prose-index.md`
 
 ### 9. Report
 
@@ -194,33 +237,32 @@ Output:
 
 ## Style Application Examples
 
-**Literary style** (Spanish):
+**Literary style** (English):
 ```
-La luz del atardecer entraba sesgada por la ventana rota, dibujando 
-geometrías de polvo y abandono sobre el suelo de madera. Elena se 
-detuvo en el umbral, respirando el olor a tiempo detenido que emanaba 
-de la casa de su abuela—papel amarillento, lavanda seca, secretos 
-guardados demasiados años.
-```
-
-**Commercial style** (Spanish):
-```
-Elena empujó la puerta. El olor la golpeó primero: polvo, lavanda 
-muerta, algo más. Algo que no debería estar ahí. Entró despacio, 
-cada tabla crujiendo bajo sus pies. La casa de su abuela guardaba 
-secretos. Y ella iba a encontrarlos.
+The late light slid through the broken window, sketching dusty grids
+across the wooden floor. Elena paused at the threshold, breathing in
+the scent of time held still—old paper, dry lavender, secrets kept
+far too long.
 ```
 
-**Genre: Thriller** (Spanish):
+**Commercial style** (English):
 ```
-Treinta segundos. Eso era todo lo que tenía.
+Elena shoved the door. The smell hit first: dust, dead lavender,
+something else. Something that shouldn’t be there. She stepped in,
+each board creaking. Her grandmother’s house kept secrets. She was
+going to find them.
+```
 
-Elena cruzó el umbral. Oscuridad. Olor a encierro. Se movió por 
-instinto, pegada a la pared, mientras sus ojos se adaptaban.
+**Genre: Thriller** (English):
+```
+Thirty seconds. That was all she had.
 
-Veinte segundos.
+Elena crossed the threshold. Darkness. Stale air. She moved on instinct,
+shoulder to the wall, eyes adjusting.
 
-La escalera. Tenía que llegar a la escalera.
+Twenty seconds.
+
+The stairs. She had to reach the stairs.
 ```
 
 ## Context

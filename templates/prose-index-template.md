@@ -25,15 +25,17 @@ This index maintains the relationship between:
 ```
 drafts/
 ├── prose-index.md              # This file - tracking index
-├── scenes/                     # Individual scene prose files
-│   ├── s001-opening.md         # Scene 1 (usually Chapter 1)
-│   ├── s002-morning-after.md   # Scene 2 (usually Chapter 1)
-│   ├── s003-discovery.md       # Scene 3 (usually Chapter 1)
-│   ├── s004-next-scene.md      # Scene 4 (usually Chapter 2)
+├── scenes/                     # Individual scene prose files organized by chapter
+│   ├── c001/                   # Chapter 1 directory
+│   │   ├── c001s001.md        # Chapter 1, Scene 1
+│   │   └── c001s002.md        # Chapter 1, Scene 2
+│   ├── c002/                   # Chapter 2 directory
+│   │   ├── c002s001.md        # Chapter 2, Scene 1
+│   │   └── c002s002.md        # Chapter 2, Scene 2
 │   └── ...
 └── chapters/                   # Optional: assembled chapters
-    ├── chapter-01.md           # Assembled from scenes s001-s003
-    ├── chapter-02.md           # Assembled from scenes s004-s007
+    ├── chapter-01.md           # Assembled from scenes in c001/
+    ├── chapter-02.md           # Assembled from scenes in c002/
     └── ...
 ```
 
@@ -42,10 +44,11 @@ drafts/
 ### File Naming Convention
 
 Scene prose files follow this pattern:
-- `s[###]-[descriptive-name].md`
-- Examples: `s001-opening.md`, `s042-confrontation-plaza.md`, `s099-climax.md`
-
-The `[###]` should match the Scene ID from your scene breakdown in `scenes/` directory.
+- Directory: `c[NNN]/` where NNN is zero-padded chapter number (001, 002, etc.)
+- File: `c[NNN]s[MMM].md` where:
+  - `NNN` is zero-padded chapter number (001, 002, etc.)
+  - `MMM` is zero-padded scene number within the chapter (001, 002, etc.)
+- Examples: `c001s001.md`, `c002s001.md`, `c025s002.md`
 
 ---
 
@@ -53,9 +56,9 @@ The `[###]` should match the Scene ID from your scene breakdown in `scenes/` dir
 
 | Scene ID | Scene Name | Prose File | Status | Word Count | References Used | Last Updated |
 |----------|------------|------------|--------|------------|-----------------|--------------|
-| S001 | Opening Scene | `scenes/s001-opening.md` | ✅ Final | 1,247 | [protagonist](../characters/protagonist.md), [tavern](../world/world-bible.md#key-locations) | [DATE] |
-| S002 | Morning After | `scenes/s002-morning-after.md` | 📝 Draft | 892 | [protagonist](../characters/protagonist.md), [love-interest](../characters/love-interest.md) | [DATE] |
-| S003 | Discovery | `scenes/s003-discovery.md` | 🚧 In Progress | 456 | [magic-system](../world/world-bible.md#magic-system), [forbidden-spell](../world/magic/forbidden-spell.md) | [DATE] |
+| S001 | Opening Scene | `scenes/c001/c001s001.md` | ✅ Final | 1,247 | [protagonist](../characters/protagonist.md), [tavern](../world/world-bible.md#key-locations) | [DATE] |
+| S002 | Morning After | `scenes/c001/c001s002.md` | 📝 Draft | 892 | [protagonist](../characters/protagonist.md), [love-interest](../characters/love-interest.md) | [DATE] |
+| S003 | Discovery | `scenes/c002/c002s001.md` | 🚧 In Progress | 456 | [magic-system](../world/world-bible.md#magic-system), [forbidden-spell](../world/magic/forbidden-spell.md) | [DATE] |
 | S004 | [Scene Name] | — | ⏸️ Not Started | 0 | — | — |
 | S005 | [Scene Name] | — | ⏸️ Not Started | 0 | — | — |
 
@@ -74,9 +77,9 @@ Track which scenes have been assembled into chapter files:
 
 | Chapter | Title | Scenes Included | Chapter File | Status | Total Words |
 |---------|-------|-----------------|--------------|--------|-------------|
-| 1 | [Chapter Title] | S001, S002, S003 | `chapters/chapter-01.md` | ✅ Assembled | 3,456 |
-| 2 | [Chapter Title] | S004, S005, S006, S007 | `chapters/chapter-02.md` | 🚧 In Progress | 2,100 |
-| 3 | [Chapter Title] | S008, S009, S010 | — | ⏸️ Not Started | 0 |
+| 1 | [Chapter Title] | c001s001, c001s002, c001s003 | `chapters/chapter-01.md` | ✅ Assembled | 3,456 |
+| 2 | [Chapter Title] | c002s001, c002s002, c002s003, c002s004 | `chapters/chapter-02.md` | 🚧 In Progress | 2,100 |
+| 3 | [Chapter Title] | c003s001, c003s002, c003s003 | — | ⏸️ Not Started | 0 |
 
 **Note**: Chapter assembly is **optional**. Some writers prefer to keep prose in individual scene files and only assemble at the end.
 
@@ -130,7 +133,7 @@ Use relative markdown links to source files:
 When writing prose for a scene:
 
 1. **Locate scene details**: Find scene metadata in `scenes/ch[XX-XX].md`
-2. **Create prose file**: `drafts/scenes/s[###]-[scene-name].md`
+2. **Create prose file**: `drafts/scenes/c[NNN]/c[NNN]s[MMM].md` (e.g., `c001s001.md`)
 3. **Consult references**:
    - Character voices from `characters/` directory
    - World details from `world/world-bible.md`
