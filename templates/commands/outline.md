@@ -154,6 +154,57 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Ensure files reference each other appropriately
    - **Create cross-references**: Link to `premise.md` for theme, `characters/[name].md` for character arcs, `world/events/[event].md` for historical context
 
+### Inserting or moving chapters
+
+**When inserting a new chapter in the outline**:
+1. **Add to outline structure**: 
+   - For single-file: Add chapter entry in `outline.md` in the correct position
+   - For split structure: Add chapter entry in `outline/chapters.md` and update `outline/acts.md` if it affects act structure
+2. **Update chapter numbers**: If inserting in the middle, renumber all subsequent chapters in the outline files
+3. **Update act structure**: If the new chapter changes act boundaries, update `outline/acts.md` (if split structure) or act sections in `outline.md`
+4. **Update character arcs**: Add chapter reference to `outline/arcs.md` (if split structure) or arc sections in `outline.md` if the chapter affects character development
+5. **Update statistics**: Adjust chapter count and word count estimates in `outline/index.md` (if split structure) or summary section in `outline.md`
+6. **Update scenes planning**: If `scenes.md` or `scenes/` directory exists, add corresponding chapter section and scenes
+7. **If prose exists**: If chapters have been drafted, you'll need to:
+   - Renumber chapter directories: `c005/` → `c006/`, `c006/` → `c007/`, etc.
+   - Rename all scene files: `c005s001.md` → `c006s001.md`, etc.
+   - Update **Chapter** field in all moved scene file headers
+   - Update `drafts/prose-index.md` with new paths
+
+**When moving a chapter to a different position**:
+1. **Move chapter entry**: Move the chapter entry in `outline.md` or `outline/chapters.md` to the new position
+2. **Renumber chapters**: Renumber all affected chapters to maintain sequential order
+3. **Update act structure**: If the move crosses act boundaries, update act assignments in `outline/acts.md` (if split structure) or act sections
+4. **Update character arcs**: Adjust chapter references in `outline/arcs.md` (if split structure) to reflect new order
+5. **Update scenes planning**: Move chapter section in `scenes.md` or `scenes/chXX-XX.md` to match new position
+6. **If prose exists**: 
+   - Renumber chapter directories and scene files to match new chapter numbers
+   - Update **Chapter** field in all affected scene file headers
+   - Update `drafts/prose-index.md` with new paths and chapter numbers
+   - Run `make chapters` and `make book` to rebuild outputs
+
+**When removing a chapter**:
+1. **Remove from outline**: Delete chapter entry from `outline.md` or `outline/chapters.md`
+2. **Renumber subsequent chapters**: Decrease chapter numbers for all chapters after the removed one
+3. **Update act structure**: Adjust act boundaries if needed in `outline/acts.md` (if split structure)
+4. **Update character arcs**: Remove chapter references from `outline/arcs.md` (if split structure)
+5. **Update scenes planning**: Remove chapter section from `scenes.md` or `scenes/chXX-XX.md`
+6. **If prose exists**:
+   - Delete chapter directory `drafts/scenes/c[NNN]/` and all scene files within
+   - Renumber subsequent chapter directories and scene files
+   - Update `drafts/prose-index.md` to remove deleted scenes and update paths for renumbered chapters
+   - Run `make chapters` and `make book` to rebuild outputs
+
+**After any insert/move/remove operation**:
+1. **Verify consistency**: 
+   - Check that chapter numbers are sequential with no gaps
+   - Ensure act assignments are correct
+   - Verify character arc references match chapter numbers
+   - Check that scenes planning files reflect the same chapter structure
+2. **Update statistics**: Recalculate chapter count, word count estimates, and pacing percentages
+3. **Rebuild outputs**: If prose exists, run `make chapters` and `make book` to rebuild assembled outputs
+4. **Update prose-index**: Verify all paths in `drafts/prose-index.md` are correct (if prose exists)
+
 9. **Report**:
    - Output path(s) to created outline file(s)
    - Note whether using single-file or split structure

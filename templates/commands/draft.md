@@ -144,17 +144,40 @@ Draft prose **scene by scene**, creating individual prose files in `drafts/scene
       - Mark scene as complete in scenes file (check the box)
 
    **Inserting or moving scenes/chapters**:
-   - When inserting a scene in a chapter:
-     - Choose the correct chapter directory `c[NNN]/`
-     - Assign the next available `s[MMM]` within that chapter (zero-padded)
-     - Rename files to keep `c[NNN]s[MMM].md` contiguous if you resequence
-   - When moving a scene between chapters:
-     - Move the file to the new `c[NNN]/` directory and renumber `s[MMM]`
-     - Update `drafts/prose-index.md` with the new path and status
-     - Update planning in scenes.md or scenes/chXX-XX.md to reflect the new order
-   - After renumbering or moving scenes:
-     - Re-run `make chapters` (and `make book` if needed) to rebuild chapter/book outputs
-     - Verify links/paths in `drafts/prose-index.md` are consistent
+
+   **When inserting a new scene during drafting**:
+   1. **Identify target chapter**: Determine which chapter directory `c[NNN]/` to use based on planning
+   2. **Check existing scenes**: Count existing scene files in that chapter directory to determine next available `s[MMM]` (zero-padded: 001, 002, etc.)
+   3. **Create scene file**: Save to `drafts/scenes/c[NNN]/c[NNN]s[MMM].md` with contiguous numbering
+   4. **If inserting in the middle**: Rename subsequent scene files to maintain contiguous numbering (e.g., if inserting between s002 and s003, new scene becomes s003, old s003 becomes s004, etc.)
+   5. **Update planning**: Add the scene entry to `scenes.md` or `scenes/chXX-XX.md` in the correct chapter section
+   6. **Update prose-index**: Add entry to `drafts/prose-index.md` with correct path, chapter number, and status
+
+   **When moving a scene between chapters**:
+   1. **Move file**: Move the scene file from source `drafts/scenes/c[OLD]/c[OLD]s[MMM].md` to destination `drafts/scenes/c[NEW]/c[NEW]s[MMM].md`
+   2. **Renumber in destination**: In the destination chapter, ensure scene numbering is contiguous (renumber existing scenes if needed)
+   3. **Update scene metadata**: Update the **Chapter** field in the scene file header to reflect new chapter number
+   4. **Update planning**: Move scene entry in `scenes.md` or `scenes/chXX-XX.md` to the new chapter section
+   5. **Update prose-index**: Update the path, chapter number, and status in `drafts/prose-index.md`
+   6. **Clean up source**: If source chapter directory is empty after move, you may remove it (optional)
+
+   **When inserting a new chapter during drafting**:
+   1. **Create chapter directory**: Create `drafts/scenes/c[NNN]/` with appropriate zero-padded number
+   2. **If inserting in the middle**: Renumber all subsequent chapter directories and their scene files:
+      - Rename directories: `c005/` → `c006/`, `c006/` → `c007/`, etc.
+      - Rename all scene files within: `c005s001.md` → `c006s001.md`, `c005s002.md` → `c006s002.md`, etc.
+      - Update **Chapter** field in all moved scene file headers
+   3. **Update planning**: Add chapter entry to `outline.md` or `outline/chapters.md` and corresponding scenes to `scenes.md` or `scenes/chXX-XX.md`
+   4. **Update prose-index**: Add entries for all scenes in the new chapter, update chapter numbers for all moved scenes
+
+   **After any insert/move/renumber operation**:
+   1. **Rebuild outputs**: Run `make chapters` to rebuild chapter files in `drafts/chapters/`
+   2. **Rebuild book**: If needed, run `make book` to rebuild the complete book file
+   3. **Verify consistency**: 
+      - Check that all paths in `drafts/prose-index.md` are correct and all scene files exist
+      - Verify scene file numbering is contiguous within each chapter
+      - Ensure **Chapter** field in scene file headers matches directory names
+      - Check that scene References fields still point to valid character/world files
 
 7. **Drafting execution rules**:
    

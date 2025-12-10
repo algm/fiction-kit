@@ -279,10 +279,11 @@ if [ ${#BRANCH_NAME} -gt $MAX_BRANCH_LENGTH ]; then
     >&2 echo "[fiction] Truncated to: $BRANCH_NAME (${#BRANCH_NAME} bytes)"
 fi
 
+# Branch creation intentionally skipped. We only use the name for directory structure and FICTION_STORY.
 if [ "$HAS_GIT" = true ]; then
-    git checkout -b "$BRANCH_NAME"
+    >&2 echo "[fiction] Info: Not creating a git branch; using \"$BRANCH_NAME\" only for story folder naming."
 else
-    >&2 echo "[fiction] Warning: Git repository not detected; skipped branch creation for $BRANCH_NAME"
+    >&2 echo "[fiction] Warning: Git repository not detected; skipped branch creation for $BRANCH_NAME (expected)."
 fi
 
 STORY_DIR="$STORIES_DIR/$BRANCH_NAME"

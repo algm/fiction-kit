@@ -124,17 +124,41 @@ Generate scene breakdowns that serve as the **single source of truth** for scene
    - Suggested drafting approach
 
 ### Inserting or moving scenes/chapters
-- **When inserting scenes**:
-  - Add the scene to the correct chapter section in scenes.md or scenes/chXX-XX.md
-  - Ensure scene IDs remain unique and ordered (S###) in planning
-  - When drafted, place prose in `drafts/scenes/c[NNN]/c[NNN]s[MMM].md` with contiguous numbering per chapter
-- **When moving scenes between chapters**:
-  - Update the planning file to reflect the new chapter assignment and order
-  - When prose exists, move the corresponding file to the new `c[NNN]/` directory and renumber `s[MMM]` within that chapter
-  - Update `drafts/prose-index.md` with the new path and status
-- **After any insert/move**:
-  - Re-run `make chapters` (and `make book` if needed) to rebuild assembled outputs
-  - Verify links and paths in `drafts/prose-index.md` stay consistent
+
+**When inserting new scenes in planning**:
+1. **Identify target chapter**: Determine which chapter section in `scenes.md` or `scenes/chXX-XX.md` to add the scene
+2. **Assign scene ID**: Use next available scene ID (S###) maintaining sequential order within the chapter
+3. **Add scene entry**: Insert the scene entry in the correct position within the chapter section, following the required scene format
+4. **Update scene count**: Adjust any scene statistics or tracking in `scenes/index.md` (if split structure)
+5. **If prose already exists**: When the scene is later drafted, ensure prose file uses contiguous numbering `c[NNN]s[MMM].md` within that chapter directory
+
+**When moving scenes between chapters in planning**:
+1. **Update planning file**: Move the scene entry from source chapter section to destination chapter section in `scenes.md` or `scenes/chXX-XX.md`
+2. **Reassign scene ID if needed**: If scene IDs are sequential per chapter, reassign to maintain order in new chapter
+3. **Update chapter references**: Update any chapter-specific notes or cross-references in the scene entry
+4. **If prose exists**: 
+   - Move the prose file from `drafts/scenes/c[OLD]/c[OLD]s[MMM].md` to `drafts/scenes/c[NEW]/c[NEW]s[MMM].md`
+   - Renumber scene files in destination chapter to maintain contiguous numbering
+   - Update the **Chapter** field in the scene prose file metadata
+5. **Update prose-index**: Update `drafts/prose-index.md` with the new path, chapter number, and status
+6. **Update statistics**: Adjust scene counts and tracking in `scenes/index.md` (if split structure)
+
+**When inserting new chapters in planning**:
+1. **Add to outline**: First add the chapter to `outline.md` or `outline/chapters.md` with chapter goal, POV, and word target
+2. **Create chapter section**: Add a new chapter section in `scenes.md` or create/update appropriate `scenes/chXX-XX.md` file
+3. **Add scenes**: Add all scenes for the new chapter following the scene format
+4. **Update structure**: If using split structure, ensure `scenes/index.md` reflects the new chapter count and update chapter groupings if needed
+5. **Renumber if needed**: If inserting in the middle, update chapter numbers in subsequent chapters in both outline and scenes files
+
+**After any insert/move operation**:
+1. **Rebuild outputs**: Run `make chapters` to rebuild chapter files in `drafts/chapters/`
+2. **Rebuild book**: If needed, run `make book` to rebuild the complete book file
+3. **Verify consistency**: 
+   - Check that all scene IDs are unique and properly ordered
+   - Verify all scene References fields point to valid character/world files
+   - Ensure chapter numbers are consistent between outline and scenes files
+   - Check that `drafts/prose-index.md` paths are correct (if prose exists)
+4. **Update tracking**: Adjust any scene statistics, pacing analysis, or tracking tables in `scenes/index.md` (if split structure)
 
 Context for scene generation: {ARGS}
 
