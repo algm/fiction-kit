@@ -2,7 +2,8 @@
 
 param(
     [switch]$Json,
-    [switch]$Split
+    [switch]$Split,
+    [switch]$Single
 )
 
 $ErrorActionPreference = 'Stop'
@@ -23,8 +24,8 @@ if (-not (Test-Path $paths.STORY_DIR)) {
     New-Item -ItemType Directory -Path $paths.STORY_DIR -Force | Out-Null
 }
 
-# Determine which template structure to use
-$useSplit = $Split
+# Determine which template structure to use (default to split mode)
+$useSplit = if ($Single) { $false } elseif ($Split) { $true } else { $true }
 if ($useSplit) {
     # Create split outline structure with directory
     if (-not (Test-Path $paths.OUTLINE_DIR)) {

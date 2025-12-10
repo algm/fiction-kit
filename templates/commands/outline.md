@@ -41,15 +41,15 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Use navigation-guide.md to locate authoritative information sources
    
    **Determine outline structure**:
-   - **Single-file**: Use outline.md for shorter stories (default, recommended for < 20 chapters)
-   - **Split structure**: Use multiple outline files in `outline/` directory for longer stories (recommended for 20+ chapters):
+   - **Split structure** (default): Use multiple outline files in `outline/` directory:
      - `outline/index.md` - Summary, structure config, beats overview
      - `outline/acts.md` - Detailed act breakdowns with key scenes
      - `outline/chapters.md` - Complete chapter plan with summaries
      - `outline/arcs.md` - Character arcs and subplot tracking
+   - **Single-file**: Use outline.md for shorter stories (use only if user specifies "--single")
    
    If user specifies preference with "--split" or "--single" in arguments, honor that.
-   Otherwise, suggest split structure for stories with 20+ chapters.
+   Otherwise, use split structure by default.
 
 2. **Load Context** (CRITICAL - Language & Style):
    - Read PREMISE_FILE and extract:

@@ -4,7 +4,7 @@ set -e
 
 # Parse command line arguments
 JSON_MODE=false
-SPLIT_MODE=false
+SPLIT_MODE=true  # Default to split mode
 ARGS=()
 
 for arg in "$@"; do
@@ -15,10 +15,14 @@ for arg in "$@"; do
         --split)
             SPLIT_MODE=true
             ;;
+        --single)
+            SPLIT_MODE=false
+            ;;
         --help|-h) 
-            echo "Usage: $0 [--json] [--split]"
+            echo "Usage: $0 [--json] [--split] [--single]"
             echo "  --json    Output results in JSON format"
-            echo "  --split   Create split outline structure (multiple files)"
+            echo "  --split   Create split outline structure (multiple files) [default]"
+            echo "  --single  Create single-file outline structure"
             echo "  --help    Show this help message"
             exit 0 
             ;;

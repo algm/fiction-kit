@@ -40,18 +40,17 @@ Generate scene breakdowns that serve as the **single source of truth** for scene
    - Prepare to create `STORY_DIR/drafts/prose-index.md` from `.fiction/templates/prose-index-template.md`
    
    **Determine scenes structure**:
-   - **Single-file**: Use scenes.md for shorter stories (default, recommended for < 30 scenes total)
-   - **Split structure**: Use multiple scene files in `scenes/` directory for longer stories (recommended for 30+ scenes):
+   - **Split structure** (default): Use multiple scene files in `scenes/` directory:
      - `scenes/index.md` - Overview, tracking, pacing analysis
      - `scenes/ch01-05.md` - Scenes for chapters 1-5 (typically Act I)
      - `scenes/ch06-12.md` - Scenes for chapters 6-12 (typically Act II-A)
      - `scenes/ch13-18.md` - Scenes for chapters 13-18 (typically Act II-B)
      - `scenes/ch19-24.md` - Scenes for chapters 19-24 (typically Act III)
      - Adjust chapter groupings based on actual story structure
+   - **Single-file**: Use scenes.md for shorter stories (use only if user specifies "--single")
    
-   **Note**: Stories with 20+ chapters (outline split recommended) typically benefit from split scenes too.
    If user specifies preference with "--split" or "--single" in arguments, honor that.
-   Otherwise, suggest split structure for stories with many chapters or complex scene requirements.
+   Otherwise, use split structure by default.
 
 2. **Load story documents**: Read from STORY_DIR:
    - **Required**: premise.md (concept, characters overview, **Language & Style Configuration**)

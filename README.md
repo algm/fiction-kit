@@ -377,29 +377,31 @@ Fiction Kit supports writing in any language. During initialization, select your
 
 ### File Structure Options
 
-**For long stories**, Fiction Kit supports splitting outline and scenes into multiple files for easier management:
+Fiction Kit supports splitting outline and scenes into multiple files for easier management:
 
 **Outline Files:**
-- **Single file** (default for < 20 chapters): `outline.md` contains everything
-- **Split structure** (recommended for 20+ chapters): Files organized in `outline/` directory:
+- **Split structure** (default): Files organized in `outline/` directory:
   - `outline/index.md` - Summary, structure config, beats overview
   - `outline/acts.md` - Detailed act breakdowns with key scenes
   - `outline/chapters.md` - Complete chapter plan with summaries
   - `outline/arcs.md` - Character arcs and subplot tracking
+- **Single file** (use `--single` flag): `outline.md` contains everything
 
 **Scene Files:**
-- **Single file** (default for < 30 scenes): `scenes.md` contains all scenes
-- **Split structure** (recommended for 30+ scenes or 20+ chapters): Files organized in `scenes/` directory:
+- **Split structure** (default): Files organized in `scenes/` directory:
   - `scenes/index.md` - Overview, tracking, pacing analysis
   - `scenes/ch01-05.md` - Scenes for chapters 1-5 (typically Act I)
   - `scenes/ch06-12.md` - Scenes for chapters 6-12 (typically Act II-A)
   - `scenes/ch13-18.md` - Scenes for chapters 13-18 (typically Act II-B)
   - `scenes/ch19-24.md` - Scenes for chapters 19-24 (typically Act III)
+- **Single file** (use `--single` flag): `scenes.md` contains all scenes
 
 **Usage:**
 ```
-/fiction.outline --split     # Create split outline structure
-/fiction.scenes --split      # Create split scenes structure
+/fiction.outline              # Create split outline structure (default)
+/fiction.outline --single     # Create single-file outline structure
+/fiction.scenes               # Create split scenes structure (default)
+/fiction.scenes --single      # Create single-file scenes structure
 ```
 
 The AI agent will automatically detect which structure exists and read from the appropriate files. All commands (draft, review, chapter, etc.) work seamlessly with both structures.
