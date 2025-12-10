@@ -87,6 +87,8 @@ Draft prose **scene by scene**, creating individual prose files in `drafts/scene
    - ALL generated prose MUST be in the specified Writing Language
    - ALL prose MUST follow the Writing Style conventions
    
+   **ABORT if Writing Language not defined** in principles.md or premise.md.
+   
    - **Load Style-Specific Prose Guidance**:
      - If Writing Style is `literary`, read `.fiction/templates/guidance/styles/literary.md` for literary prose techniques
      - If Writing Style is `commercial`, read `.fiction/templates/guidance/styles/commercial.md` for commercial prose requirements

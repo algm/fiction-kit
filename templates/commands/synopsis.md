@@ -68,6 +68,8 @@ Read `/memory/principles.md` and extract:
 - **Writing Style**: Affects pitch tone
 - **Genre**: Affects marketing conventions
 
+**ABORT if Writing Language not defined** in principles.md.
+
 ### 3. Load Story Content
 
 **Navigation Setup**:

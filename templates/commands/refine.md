@@ -68,6 +68,8 @@ Read `/memory/principles.md` and extract:
 - **Voice settings**: POV, tense, prose style preferences
 - **Things to ALWAYS/NEVER do**: Hard rules to enforce
 
+**ABORT if Writing Language not defined** in principles.md.
+
 ### 3. Identify Content to Refine
 
 From user input, determine scope:

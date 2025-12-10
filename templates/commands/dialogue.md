@@ -56,6 +56,8 @@ Read `/memory/principles.md` and extract:
 - **Writing Style**: Affects dialogue approach
 - **Dialogue style settings**: Realistic/stylized/minimal/snappy
 
+**ABORT if Writing Language not defined** in principles.md.
+
 ### 3. Load Character Voices
 
 **Navigation Setup**:

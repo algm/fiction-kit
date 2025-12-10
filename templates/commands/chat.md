@@ -59,6 +59,8 @@ Read `/memory/principles.md` and extract:
 - **Writing Style**: Affects character voice and responses
 - **Regional Variant**: For culturally appropriate expressions
 
+**ABORT if Writing Language not defined** in principles.md.
+
 ### 3. Load Character Context
 
 **Navigation Setup**:
