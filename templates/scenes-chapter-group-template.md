@@ -1,6 +1,6 @@
 # Scenes: Chapters [START]-[END] - [STORY TITLE]
 
-**Part of**: Scene breakdown (see scenes-index.md for overview and tracking)
+**Part of**: Scene breakdown (see scenes/index.md for overview and tracking)
 **Covers**: Chapters [START] through [END] ([ACT NAME])
 
 ---

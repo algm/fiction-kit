@@ -173,14 +173,14 @@ if [[ -d "$DRAFTS_DIR" ]] && [[ -n "$(ls -A "$DRAFTS_DIR" 2>/dev/null)" ]]; then
     docs+=("drafts/")
 fi
 
-# Include scenes.md if requested and it exists
+# Include scenes if requested and they exist
 if $INCLUDE_SCENES; then
     if [[ -f "$SCENES_INDEX" ]]; then
-        docs+=("scenes-index.md")
+        docs+=("scenes/index.md")
         # Also note that split structure exists
-        for scene_file in "$STORY_DIR"/scenes-ch*.md; do
+        for scene_file in "$STORY_DIR"/scenes/ch*.md; do
             if [[ -f "$scene_file" ]]; then
-                docs+=("$(basename "$scene_file")")
+                docs+=("scenes/$(basename "$scene_file")")
             fi
         done
     elif [[ -f "$SCENES" ]]; then

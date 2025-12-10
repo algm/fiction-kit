@@ -5,11 +5,11 @@
 
 **Note**: This template is filled in by the `/fiction.outline` command. See `.fiction/templates/commands/outline.md` for the execution workflow.
 
-> 💡 **NEW**: For long stories, consider using the **split outline structure** which divides the outline into multiple files:
-> - `outline-index.md` - Summary and overview
-> - `outline-acts.md` - Detailed act breakdowns
-> - `outline-chapters.md` - Complete chapter plan
-> - `outline-arcs.md` - Character arcs and subplots
+> 💡 **NEW**: For long stories, consider using the **split outline structure** which organizes files in an `outline/` directory:
+> - `outline/index.md` - Summary and overview
+> - `outline/acts.md` - Detailed act breakdowns
+> - `outline/chapters.md` - Complete chapter plan
+> - `outline/arcs.md` - Character arcs and subplots
 >
 > See templates: `outline-index-template.md`, `outline-acts-template.md`, `outline-chapters-template.md`, `outline-arcs-template.md`
 

@@ -50,10 +50,10 @@ You **MUST** consider the user input before proceeding (if not empty).
 4. **Load Story Context**: Read from STORY_DIR:
    - premise.md: Core concept, characters, conflict
    - **Outline files** (load appropriate structure):
-     - If split structure exists: Read outline-index.md, outline-acts.md, outline-chapters.md, outline-arcs.md
+     - If split structure exists: Read outline/index.md, outline/acts.md, outline/chapters.md, outline/arcs.md
      - Otherwise: Read outline.md (if exists)
    - **Scenes files** (load appropriate structure):
-     - If split structure exists: Read scenes-index.md and scenes-chXX-XX.md files
+     - If split structure exists: Read scenes/index.md and scenes/chXX-XX.md files
      - Otherwise: Read scenes.md (if exists)
    - characters/ (if exists): Character profiles
    - world/ (if exists): World-building docs

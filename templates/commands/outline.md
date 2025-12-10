@@ -34,11 +34,11 @@ You **MUST** consider the user input before proceeding (if not empty).
    
    **Determine outline structure**:
    - **Single-file**: Use outline.md for shorter stories (default, recommended for < 20 chapters)
-   - **Split structure**: Use multiple outline files for longer stories (recommended for 20+ chapters):
-     - `outline-index.md` - Summary, structure config, beats overview
-     - `outline-acts.md` - Detailed act breakdowns with key scenes
-     - `outline-chapters.md` - Complete chapter plan with summaries
-     - `outline-arcs.md` - Character arcs and subplot tracking
+   - **Split structure**: Use multiple outline files in `outline/` directory for longer stories (recommended for 20+ chapters):
+     - `outline/index.md` - Summary, structure config, beats overview
+     - `outline/acts.md` - Detailed act breakdowns with key scenes
+     - `outline/chapters.md` - Complete chapter plan with summaries
+     - `outline/arcs.md` - Character arcs and subplot tracking
    
    If user specifies preference with "--split" or "--single" in arguments, honor that.
    Otherwise, suggest split structure for stories with 20+ chapters.
@@ -120,10 +120,11 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Ensure Language & Style section is at the top
    
    **For split structure**:
-   - Save to STORY_DIR/outline-index.md (summary and overview)
-   - Save to STORY_DIR/outline-acts.md (detailed act breakdowns)
-   - Save to STORY_DIR/outline-chapters.md (chapter plan)
-   - Save to STORY_DIR/outline-arcs.md (character arcs and subplots)
+   - Create STORY_DIR/outline/ directory if needed
+   - Save to STORY_DIR/outline/index.md (summary and overview)
+   - Save to STORY_DIR/outline/acts.md (detailed act breakdowns)
+   - Save to STORY_DIR/outline/chapters.md (chapter plan)
+   - Save to STORY_DIR/outline/arcs.md (character arcs and subplots)
    - Ensure each file has Language & Style section
    - Ensure files reference each other appropriately
 

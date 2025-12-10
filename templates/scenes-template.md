@@ -5,12 +5,12 @@
 
 **Organization**: Scenes are grouped by chapter to enable focused drafting sessions.
 
-> 💡 **NEW**: For long stories with many scenes, consider using the **split scenes structure** which divides scenes into multiple files:
-> - `scenes-index.md` - Overview, tracking, and pacing analysis
-> - `scenes-ch01-05.md` - Scenes for Act I chapters
-> - `scenes-ch06-12.md` - Scenes for Act II-A chapters
-> - `scenes-ch13-18.md` - Scenes for Act II-B chapters
-> - `scenes-ch19-24.md` - Scenes for Act III chapters
+> 💡 **NEW**: For long stories with many scenes, consider using the **split scenes structure** which organizes files in a `scenes/` directory:
+> - `scenes/index.md` - Overview, tracking, and pacing analysis
+> - `scenes/ch01-05.md` - Scenes for Act I chapters
+> - `scenes/ch06-12.md` - Scenes for Act II-A chapters
+> - `scenes/ch13-18.md` - Scenes for Act II-B chapters
+> - `scenes/ch19-24.md` - Scenes for Act III chapters
 >
 > See templates: `scenes-index-template.md`, `scenes-chapter-group-template.md`
 

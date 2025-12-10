@@ -143,10 +143,10 @@ if ((Test-Path $paths.DRAFTS_DIR) -and (Get-ChildItem $paths.DRAFTS_DIR -ErrorAc
 
 if ($IncludeScenes) {
     if (Test-Path $paths.SCENES_INDEX) {
-        $docs += "scenes-index.md"
+        $docs += "scenes/index.md"
         # Also include split scene files
-        Get-ChildItem -Path $paths.STORY_DIR -Filter "scenes-ch*.md" | ForEach-Object {
-            $docs += $_.Name
+        Get-ChildItem -Path (Join-Path $paths.STORY_DIR "scenes") -Filter "ch*.md" -ErrorAction SilentlyContinue | ForEach-Object {
+            $docs += "scenes/$($_.Name)"
         }
     } elseif (Test-Path $paths.SCENES) {
         $docs += "scenes.md"

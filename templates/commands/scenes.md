@@ -28,12 +28,12 @@ You **MUST** consider the user input before proceeding (if not empty).
    
    **Determine scenes structure**:
    - **Single-file**: Use scenes.md for shorter stories (default, recommended for < 30 scenes total)
-   - **Split structure**: Use multiple scene files for longer stories (recommended for 30+ scenes):
-     - `scenes-index.md` - Overview, tracking, pacing analysis
-     - `scenes-ch01-05.md` - Scenes for chapters 1-5 (typically Act I)
-     - `scenes-ch06-12.md` - Scenes for chapters 6-12 (typically Act II-A)
-     - `scenes-ch13-18.md` - Scenes for chapters 13-18 (typically Act II-B)
-     - `scenes-ch19-24.md` - Scenes for chapters 19-24 (typically Act III)
+   - **Split structure**: Use multiple scene files in `scenes/` directory for longer stories (recommended for 30+ scenes):
+     - `scenes/index.md` - Overview, tracking, pacing analysis
+     - `scenes/ch01-05.md` - Scenes for chapters 1-5 (typically Act I)
+     - `scenes/ch06-12.md` - Scenes for chapters 6-12 (typically Act II-A)
+     - `scenes/ch13-18.md` - Scenes for chapters 13-18 (typically Act II-B)
+     - `scenes/ch19-24.md` - Scenes for chapters 19-24 (typically Act III)
      - Adjust chapter groupings based on actual story structure
    
    **Note**: Stories with 20+ chapters (outline split recommended) typically benefit from split scenes too.
@@ -44,7 +44,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - **Required**: premise.md (concept, characters overview, **Language & Style Configuration**)
    - **Required**: /memory/principles.md (voice, style, **Writing Language & Style section**)
    - **Required - Outline files**: Load outline information:
-     - **If split structure exists**: Read outline-index.md, outline-acts.md, outline-chapters.md, outline-arcs.md
+     - **If split structure exists**: Read outline/index.md, outline/acts.md, outline/chapters.md, outline/arcs.md
      - **Otherwise**: Read outline.md
    - **Optional**: characters/ (character profiles), world/ (world-building docs), research/ (research notes)
    - Note: Not all projects have all documents. Generate scenes based on what's available.
@@ -73,13 +73,15 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Include all tracking and pacing analysis
    
    **For split structure**:
-   - Use `.fiction/templates/scenes-index-template.md` for scenes-index.md:
+   - Create STORY_DIR/scenes/ directory if needed
+   - Use `.fiction/templates/scenes-index-template.md` for scenes/index.md:
      - Story overview and scene statistics
      - Scene tracking by purpose (plot, character, world, relationship)
      - Pacing analysis and tension curve
      - Drafting strategy recommendations
    - Use `.fiction/templates/scenes-chapter-group-template.md` for each chapter group file:
      - Group chapters logically by act or by groups of 5-7 chapters
+     - Save as scenes/ch01-05.md, scenes/ch06-12.md, etc.
      - Each file contains detailed scene breakdowns for its chapters
      - Include transition notes between sections
    - Ensure consistent Language & Style section in all files

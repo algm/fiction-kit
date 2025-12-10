@@ -26,7 +26,11 @@ if (-not (Test-Path $paths.STORY_DIR)) {
 # Determine which template structure to use
 $useSplit = $Split
 if ($useSplit) {
-    # Create split outline structure
+    # Create split outline structure with directory
+    if (-not (Test-Path $paths.OUTLINE_DIR)) {
+        New-Item -ItemType Directory -Path $paths.OUTLINE_DIR -Force | Out-Null
+    }
+    
     $templateIndex = Join-Path $paths.REPO_ROOT ".fiction/templates/outline-index-template.md"
     $templateActs = Join-Path $paths.REPO_ROOT ".fiction/templates/outline-acts-template.md"
     $templateChapters = Join-Path $paths.REPO_ROOT ".fiction/templates/outline-chapters-template.md"
@@ -40,7 +44,7 @@ if ($useSplit) {
         Copy-Item $templateActs $paths.OUTLINE_ACTS
         Copy-Item $templateChapters $paths.OUTLINE_CHAPTERS
         Copy-Item $templateArcs $paths.OUTLINE_ARCS
-        Write-Host "Copied split outline templates to $($paths.STORY_DIR)"
+        Write-Host "Copied split outline templates to $($paths.OUTLINE_DIR)"
     } else {
         Write-Warning "Split outline templates not found, falling back to single file"
         $useSplit = $false

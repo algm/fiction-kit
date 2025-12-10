@@ -1,6 +1,6 @@
 # Chapter Plan: [STORY TITLE]
 
-**Part of**: Outline structure (see outline-index.md for overview)
+**Part of**: Outline structure (see outline/index.md for overview)
 
 This file contains the complete chapter-by-chapter plan with summaries, POV assignments, settings, and word targets.
 

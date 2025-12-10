@@ -9,13 +9,13 @@
 
 ## Scene File Structure
 
-This scene breakdown is organized into multiple files:
+This scene breakdown is organized into multiple files within the `scenes/` directory:
 
-- **scenes-index.md** (this file): Overview, tracking, pacing analysis, and conventions
-- **scenes-ch01-05.md**: Detailed scenes for Chapters 1-5 (Act I)
-- **scenes-ch06-12.md**: Detailed scenes for Chapters 6-12 (Act II-A)
-- **scenes-ch13-18.md**: Detailed scenes for Chapters 13-18 (Act II-B)
-- **scenes-ch19-24.md**: Detailed scenes for Chapters 19-24 (Act III)
+- **scenes/index.md** (this file): Overview, tracking, pacing analysis, and conventions
+- **scenes/ch01-05.md**: Detailed scenes for Chapters 1-5 (Act I)
+- **scenes/ch06-12.md**: Detailed scenes for Chapters 6-12 (Act II-A)
+- **scenes/ch13-18.md**: Detailed scenes for Chapters 13-18 (Act II-B)
+- **scenes/ch19-24.md**: Detailed scenes for Chapters 19-24 (Act III)
 
 *Adjust file groupings based on your story's chapter count and structure.*
 
@@ -81,12 +81,12 @@ Following Scene-Sequel structure:
 
 | Chapter | Title | Scenes | Est. Words | File Location |
 |---------|-------|--------|------------|---------------|
-| 1 | [Title] | [X] | [Words] | scenes-ch01-05.md |
-| 2 | [Title] | [X] | [Words] | scenes-ch01-05.md |
-| 3 | [Title] | [X] | [Words] | scenes-ch01-05.md |
-| 4 | [Title] | [X] | [Words] | scenes-ch01-05.md |
-| 5 | [Title] | [X] | [Words] | scenes-ch01-05.md |
-| 6 | [Title] | [X] | [Words] | scenes-ch06-12.md |
+| 1 | [Title] | [X] | [Words] | scenes/ch01-05.md |
+| 2 | [Title] | [X] | [Words] | scenes/ch01-05.md |
+| 3 | [Title] | [X] | [Words] | scenes/ch01-05.md |
+| 4 | [Title] | [X] | [Words] | scenes/ch01-05.md |
+| 5 | [Title] | [X] | [Words] | scenes/ch01-05.md |
+| 6 | [Title] | [X] | [Words] | scenes/ch06-12.md |
 | ... | ... | ... | ... | ... |
 
 ---
@@ -295,10 +295,10 @@ Choose an approach based on your preferences:
 
 Track which scene files are complete:
 
-- [ ] scenes-ch01-05.md (Act I)
-- [ ] scenes-ch06-12.md (Act II-A)
-- [ ] scenes-ch13-18.md (Act II-B)
-- [ ] scenes-ch19-24.md (Act III)
+- [ ] scenes/ch01-05.md (Act I)
+- [ ] scenes/ch06-12.md (Act II-A)
+- [ ] scenes/ch13-18.md (Act II-B)
+- [ ] scenes/ch19-24.md (Act III)
 
 ### Scene Completion Count
 
@@ -311,7 +311,7 @@ Track which scene files are complete:
 
 ## Next Steps
 
-1. Review scene files (scenes-ch01-05.md, etc.) and refine as needed
+1. Review scene files (scenes/ch01-05.md, etc.) and refine as needed
 2. Use `/fiction.draft` to begin writing prose
 3. Use `/fiction.chapter [number]` to draft individual chapters
 4. Use `/fiction.review` to check consistency across scenes

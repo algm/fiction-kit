@@ -33,10 +33,10 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 3. Load and analyze the story context:
    - **REQUIRED - Scenes**: Read scene information:
-     - **If split structure exists**: Read scenes-index.md for overview, then relevant scenes-chXX-XX.md file(s)
+     - **If split structure exists**: Read scenes/index.md for overview, then relevant scenes/chXX-XX.md file(s)
      - **Otherwise**: Read scenes.md for complete scene list
    - **REQUIRED - Outline**: Read outline information:
-     - **If split structure exists**: Read outline-index.md, outline-chapters.md, and outline-arcs.md
+     - **If split structure exists**: Read outline/index.md, outline/chapters.md, and outline/arcs.md
      - **Otherwise**: Read outline.md for structure, beats, and pacing
    - **REQUIRED**: Read premise.md for theme, characters overview, tone, **AND Language & Style Configuration**
    - **REQUIRED**: Read /memory/principles.md for voice and style rules, **especially Writing Language & Style section**
@@ -105,7 +105,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Report progress after each completed chapter
    - Track word count vs. target
    - Note any scenes that diverged from plan (for later review)
-   - **IMPORTANT**: Mark completed scenes with [X] in the appropriate scenes file (scenes.md or scenes-chXX-XX.md)
+   - **IMPORTANT**: Mark completed scenes with [X] in the appropriate scenes file (scenes.md or scenes/chXX-XX.md)
 
 10. Completion validation:
     - Verify all scenes are drafted
@@ -151,5 +151,5 @@ Last Updated: YYYY-MM-DD
 
 Note: This command assumes a complete scene breakdown exists. If scenes are incomplete or missing, suggest running `/fiction.scenes` first.
 
-**File Location Note**: The command will automatically detect whether the story uses single-file (scenes.md) or split structure (scenes-index.md + scenes-chXX-XX.md files) and read from the appropriate files.
+**File Location Note**: The command will automatically detect whether the story uses single-file (scenes.md) or split structure (scenes/index.md + scenes/chXX-XX.md files) and read from the appropriate files.
 

@@ -1,6 +1,6 @@
 # Character Arcs & Subplots: [STORY TITLE]
 
-**Part of**: Outline structure (see outline-index.md for overview)
+**Part of**: Outline structure (see outline/index.md for overview)
 
 This file tracks character arcs and subplots throughout the story to ensure consistent development and thematic coherence.
 

@@ -9,12 +9,12 @@
 
 ## Outline Structure
 
-This outline is organized into multiple files:
+This outline is organized into multiple files within the `outline/` directory:
 
-- **outline-index.md** (this file): Summary, structure configuration, and overview
-- **outline-acts.md**: Detailed act breakdowns with key scenes
-- **outline-chapters.md**: Complete chapter plan with summaries
-- **outline-arcs.md**: Character arcs and subplot tracking
+- **outline/index.md** (this file): Summary, structure configuration, and overview
+- **outline/acts.md**: Detailed act breakdowns with key scenes
+- **outline/chapters.md**: Complete chapter plan with summaries
+- **outline/arcs.md**: Character arcs and subplot tracking
 
 ---
 
@@ -82,7 +82,7 @@ This outline is organized into multiple files:
 | **Finale/Climax** | 80-95% | Ch 20-23 | [Final confrontation] |
 | **Final Image** | 99-100% | Ch 24 | ["After" snapshot] |
 
-*For detailed act breakdowns, see outline-acts.md*
+*For detailed act breakdowns, see outline/acts.md*
 
 ---
 
@@ -91,7 +91,7 @@ This outline is organized into multiple files:
 Total chapters: [X]
 Average chapter length: [Y words]
 
-*For complete chapter plan with summaries, see outline-chapters.md*
+*For complete chapter plan with summaries, see outline/chapters.md*
 
 ---
 
@@ -108,7 +108,7 @@ Average chapter length: [Y words]
 - **Role**: [e.g., Mentor, Ally, Antagonist]
 - **Arc summary**: [Brief description]
 
-*For detailed character arcs and subplots, see outline-arcs.md*
+*For detailed character arcs and subplots, see outline/arcs.md*
 
 ---
 

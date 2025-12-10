@@ -1,6 +1,6 @@
 # Act Breakdown: [STORY TITLE]
 
-**Part of**: Outline structure (see outline-index.md for overview)
+**Part of**: Outline structure (see outline/index.md for overview)
 
 This file contains detailed breakdowns for each act, including goals, emotional tone, key scenes, and turning points.
 

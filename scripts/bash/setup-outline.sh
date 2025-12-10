@@ -43,7 +43,9 @@ mkdir -p "$STORY_DIR"
 
 # Determine which template structure to use
 if $SPLIT_MODE; then
-    # Create split outline structure
+    # Create split outline structure with directory
+    mkdir -p "$OUTLINE_DIR"
+    
     TEMPLATE_INDEX="$REPO_ROOT/.fiction/templates/outline-index-template.md"
     TEMPLATE_ACTS="$REPO_ROOT/.fiction/templates/outline-acts-template.md"
     TEMPLATE_CHAPTERS="$REPO_ROOT/.fiction/templates/outline-chapters-template.md"
@@ -57,7 +59,7 @@ if $SPLIT_MODE; then
         cp "$TEMPLATE_ACTS" "$OUTLINE_ACTS"
         cp "$TEMPLATE_CHAPTERS" "$OUTLINE_CHAPTERS"
         cp "$TEMPLATE_ARCS" "$OUTLINE_ARCS"
-        echo "Copied split outline templates to $STORY_DIR"
+        echo "Copied split outline templates to $OUTLINE_DIR"
     else
         echo "Warning: Split outline templates not found"
         # Fall back to single file if split templates don't exist
