@@ -242,6 +242,35 @@ Fiction Kit supports writing in any language. During initialization, select your
 
 ## 📋 Available Commands
 
+### File Structure Options
+
+**For long stories**, Fiction Kit supports splitting outline and scenes into multiple files for easier management:
+
+**Outline Files:**
+- **Single file** (default for < 15 chapters): `outline.md` contains everything
+- **Split structure** (recommended for 15+ chapters):
+  - `outline-index.md` - Summary, structure config, beats overview
+  - `outline-acts.md` - Detailed act breakdowns with key scenes
+  - `outline-chapters.md` - Complete chapter plan with summaries
+  - `outline-arcs.md` - Character arcs and subplot tracking
+
+**Scene Files:**
+- **Single file** (default for < 20 scenes): `scenes.md` contains all scenes
+- **Split structure** (recommended for 20+ scenes):
+  - `scenes-index.md` - Overview, tracking, pacing analysis
+  - `scenes-ch01-05.md` - Scenes for chapters 1-5 (typically Act I)
+  - `scenes-ch06-12.md` - Scenes for chapters 6-12 (typically Act II-A)
+  - `scenes-ch13-18.md` - Scenes for chapters 13-18 (typically Act II-B)
+  - `scenes-ch19-24.md` - Scenes for chapters 19-24 (typically Act III)
+
+**Usage:**
+```
+/fiction.outline --split     # Create split outline structure
+/fiction.scenes --split      # Create split scenes structure
+```
+
+The AI agent will automatically detect which structure exists and read from the appropriate files. All commands (draft, review, chapter, etc.) work seamlessly with both structures.
+
 ### Core Workflow Commands
 
 | Command | Description |
@@ -380,8 +409,19 @@ my-novel/
 ├── stories/
 │   └── 001-barcelona-noir/
 │       ├── premise.md           # Story concept
-│       ├── outline.md           # Structure and beats
-│       ├── scenes.md            # Scene breakdown
+│       ├── outline.md           # Structure and beats (single file)
+│       │   OR (for split structure):
+│       ├── outline-index.md     # Summary and overview
+│       ├── outline-acts.md      # Detailed act breakdowns
+│       ├── outline-chapters.md  # Chapter plan
+│       ├── outline-arcs.md      # Character arcs and subplots
+│       ├── scenes.md            # Scene breakdown (single file)
+│       │   OR (for split structure):
+│       ├── scenes-index.md      # Overview and tracking
+│       ├── scenes-ch01-05.md    # Act I scenes
+│       ├── scenes-ch06-12.md    # Act II-A scenes
+│       ├── scenes-ch13-18.md    # Act II-B scenes
+│       ├── scenes-ch19-24.md    # Act III scenes
 │       ├── synopsis.md          # Marketing materials
 │       ├── characters/          # Character profiles
 │       │   ├── elena-vidal.md
