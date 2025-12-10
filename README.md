@@ -377,29 +377,31 @@ Fiction Kit supports writing in any language. During initialization, select your
 
 ### File Structure Options
 
-**For long stories**, Fiction Kit supports splitting outline and scenes into multiple files for easier management:
+Fiction Kit supports splitting outline and scenes into multiple files for easier management:
 
 **Outline Files:**
-- **Single file** (default for < 20 chapters): `outline.md` contains everything
-- **Split structure** (recommended for 20+ chapters): Files organized in `outline/` directory:
+- **Split structure** (default): Files organized in `outline/` directory:
   - `outline/index.md` - Summary, structure config, beats overview
   - `outline/acts.md` - Detailed act breakdowns with key scenes
   - `outline/chapters.md` - Complete chapter plan with summaries
   - `outline/arcs.md` - Character arcs and subplot tracking
+- **Single file** (use `--single` flag): `outline.md` contains everything
 
 **Scene Files:**
-- **Single file** (default for < 30 scenes): `scenes.md` contains all scenes
-- **Split structure** (recommended for 30+ scenes or 20+ chapters): Files organized in `scenes/` directory:
+- **Split structure** (default): Files organized in `scenes/` directory:
   - `scenes/index.md` - Overview, tracking, pacing analysis
   - `scenes/ch01-05.md` - Scenes for chapters 1-5 (typically Act I)
   - `scenes/ch06-12.md` - Scenes for chapters 6-12 (typically Act II-A)
   - `scenes/ch13-18.md` - Scenes for chapters 13-18 (typically Act II-B)
   - `scenes/ch19-24.md` - Scenes for chapters 19-24 (typically Act III)
+- **Single file** (use `--single` flag): `scenes.md` contains all scenes
 
 **Usage:**
 ```
-/fiction.outline --split     # Create split outline structure
-/fiction.scenes --split      # Create split scenes structure
+/fiction.outline              # Create split outline structure (default)
+/fiction.outline --single     # Create single-file outline structure
+/fiction.scenes               # Create split scenes structure (default)
+/fiction.scenes --single      # Create single-file scenes structure
 ```
 
 The AI agent will automatically detect which structure exists and read from the appropriate files. All commands (draft, review, chapter, etc.) work seamlessly with both structures.
@@ -429,6 +431,126 @@ The AI agent will automatically detect which structure exists and read from the 
 | `/fiction.synopsis` | Generate synopsis/blurb for pitching |
 | `/fiction.dialogue` | Generate or improve dialogue for scenes |
 | `/fiction.research` | Research historical/technical details |
+
+## 🔗 Cross-Reference System & Information Architecture
+
+Fiction Kit implements a **Single Source of Truth** architecture to prevent contradictions and maintain consistency across long-form fiction projects.
+
+### The Problem
+
+Traditional writing approaches often lead to:
+- Information duplicated across multiple files (character ages in 5 different places)
+- Contradictions when updating (changed magic system rules in one place, forgot to update scenes)
+- Lost details (which file had the historical timeline again?)
+- Difficult revisions (need to search every file to find all mentions of a character)
+
+### The Solution: Single Source of Truth
+
+**Each piece of information exists in exactly ONE authoritative location.** Other files reference it via markdown links.
+
+### How It Works
+
+**Navigation Guide** (`navigation-guide.md`):
+- Master index showing where every type of information lives
+- Eliminates "where should this go?" questions
+- First place AI agents check when looking for information
+
+**Cross-Reference Patterns**:
+```markdown
+<!-- In character file: Link to world events -->
+She witnessed [the Plaza Massacre](../world/events/plaza-massacre.md) at age 12.
+
+<!-- In scene planning: Link to characters and world -->
+- **References**: [Maria](../characters/maria.md), [Plaza](../world/world-bible.md#key-locations)
+
+<!-- In world timeline: Link to detailed event files -->
+| 1935 | [Plaza Massacre](events/plaza-massacre.md) | Government crackdown |
+```
+
+**Directory Structure**:
+```
+story-project/
+├── navigation-guide.md          # Master information index
+├── characters/                  # Character files (single source)
+│   ├── protagonist.md
+│   └── antagonist.md
+├── world/
+│   ├── world-bible.md          # Main world document (single source)
+│   ├── events/                 # Detailed historical events
+│   │   └── plaza-massacre.md
+│   └── magic/                  # Detailed spell/ability files
+│       └── fire-binding.md
+├── scenes/
+│   ├── index.md                # Scene planning index
+│   └── ch01-05.md              # Scene metadata (NOT prose)
+└── drafts/
+    ├── prose-index.md          # Maps scenes to prose files
+    └── scenes/                 # Individual scene prose
+        ├── s001-opening.md
+        └── s002-next.md
+```
+
+### Scene-by-Scene Drafting
+
+Fiction Kit writes prose **one scene at a time** in separate files:
+
+**Why?**
+- ✅ Manageable file sizes (no 100k+ word files)
+- ✅ Focused writing sessions (draft one scene, check it off)
+- ✅ Easy revision (revise individual scenes)
+- ✅ Clear progress tracking (visual checklist)
+- ✅ Reference clarity (each scene lists sources consulted)
+
+**Workflow:**
+1. **Scene planning** lives in `scenes/ch01-05.md` with metadata and **References** field
+2. Run `/fiction.draft` to write prose
+3. Each scene creates `drafts/scenes/s001-name.md` with clean narrative
+4. `drafts/prose-index.md` tracks progress and references
+5. No links in prose itself - just clean narrative text
+
+**Example:**
+
+Scene planning (`scenes/ch01-05.md`):
+```markdown
+- [ ] S001 [Maria] **Opening** - Apartment, Morning
+  - **Goal**: Establish routine before disruption
+  - **Conflict**: Internal restlessness vs. comfortable life
+  - **Outcome**: Yes-but (peaceful morning interrupted by message)
+  - **Summary**: Maria's morning routine in her Barcelona apartment...
+  - **References**: [Maria](../characters/maria.md), [Apartment](../world/world-bible.md#key-locations)
+```
+
+Prose file (`drafts/scenes/s001-opening.md`):
+```markdown
+# Scene 001: Opening
+
+**Chapter**: 1
+**POV**: Maria Santos
+**References Consulted**: Maria's character file, Barcelona apartment location
+
+---
+
+[Clean narrative prose here - no markdown links]
+Maria woke to sunlight streaming through...
+```
+
+Prose index (`drafts/prose-index.md`):
+```markdown
+| Scene | Prose File | Status | References |
+|-------|------------|--------|------------|
+| S001 | scenes/s001-opening.md | ✅ Final | [Maria](../characters/maria.md), [Apartment](../world/world-bible.md#locations) |
+```
+
+### Cross-Reference Validation
+
+`/fiction.review` automatically:
+- ✅ Checks all markdown links are valid (no broken references)
+- ✅ Verifies information isn't duplicated
+- ✅ Ensures timeline events match across files
+- ✅ Validates magic/tech usage follows established rules
+- ✅ Confirms character details are consistent
+
+**See:** [fiction-methodology.md](fiction-methodology.md#the-single-source-of-truth-principle) for complete documentation.
 
 ## 🔧 Prerequisites
 

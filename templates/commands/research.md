@@ -17,6 +17,30 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Gather accurate information for story authenticity. Research historical periods, technical processes, cultural practices, locations, professions, and any element that requires factual grounding.
 
+**Single Source of Truth Principle**: Research notes live in `research/[topic].md`. Reference these from scenes and world-building files when needed.
+
+**See**: [navigation-guide.md](../navigation-guide.md) for the complete information location map.
+
+## Critical Restriction: Do Not Develop Outline or Chapter Structure
+
+**IMPORTANT**: This command MUST NOT develop, modify, or create:
+- Outline structure (acts, beats, chapter plans)
+- Chapter breakdowns or chapter summaries
+- Scene planning or scene breakdowns
+- Plot structure or story beats
+
+**Only the following commands are authorized to develop outline and chapter information:**
+- `/fiction.outline` - For creating and modifying story outlines
+- `/fiction.scenes` - For creating and modifying scene breakdowns
+
+**If outline or chapter development is needed**, direct the user to use the appropriate command (`/fiction.outline` or `/fiction.scenes`) instead.
+
+**This command should:**
+- Reference existing outline/scenes files when needed for context
+- NOT create new outline elements
+- NOT modify chapter structure
+- NOT plan new scenes or chapters
+
 ## Research Categories
 
 | Category | Examples |
@@ -182,10 +206,15 @@ Connect research to narrative needs:
 
 ### 9. Verify Against Established Canon
 
+**Navigation Setup**:
+- Consult `STORY_DIR/navigation-guide.md` to locate authoritative world information
+
 Cross-check with existing world/docs:
+- **Reference single sources**: Check against `world/world-bible.md` for world facts, `world/events/[event].md` for historical events, `world/magic/[spell].md` for magic systems
 - No contradictions with established facts
 - Research supports, doesn't override creative choices
 - Flag any conflicts for resolution
+- **Create cross-references**: Link research files from scenes that use them (in scene References field) and from world-building files when relevant
 
 ### 10. Report
 

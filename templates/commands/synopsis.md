@@ -17,6 +17,30 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Generate compelling synopsis content at various lengths for different purposes: pitching to agents, back cover copy, social media promotion, or personal reference.
 
+**Single Source of Truth Principle**: Reference story information from authoritative locations (premise.md, outline files, character files).
+
+**See**: [navigation-guide.md](../navigation-guide.md) for the complete information location map.
+
+## Critical Restriction: Do Not Develop Outline or Chapter Structure
+
+**IMPORTANT**: This command MUST NOT develop, modify, or create:
+- Outline structure (acts, beats, chapter plans)
+- Chapter breakdowns or chapter summaries
+- Scene planning or scene breakdowns
+- Plot structure or story beats
+
+**Only the following commands are authorized to develop outline and chapter information:**
+- `/fiction.outline` - For creating and modifying story outlines
+- `/fiction.scenes` - For creating and modifying scene breakdowns
+
+**If outline or chapter development is needed**, direct the user to use the appropriate command (`/fiction.outline` or `/fiction.scenes`) instead.
+
+**This command should:**
+- Reference existing outline/scenes files when needed for context
+- NOT create new outline elements
+- NOT modify chapter structure
+- NOT plan new scenes or chapters
+
 ## Synopsis Types
 
 | Type | Length | Purpose | Includes Ending? |
@@ -44,9 +68,14 @@ Read `/memory/principles.md` and extract:
 - **Writing Style**: Affects pitch tone
 - **Genre**: Affects marketing conventions
 
+**ABORT if Writing Language not defined** in principles.md.
+
 ### 3. Load Story Content
 
-**From premise.md**:
+**Navigation Setup**:
+- Consult `STORY_DIR/navigation-guide.md` to locate authoritative story information
+
+**From premise.md** (single source for story foundation):
 - Logline (if exists)
 - Genre and subgenre
 - Target audience
@@ -54,9 +83,11 @@ Read `/memory/principles.md` and extract:
 - Central conflict and stakes
 - Theme
 
-**From outline.md** (if exists):
+**From outline files** (load appropriate structure):
+- **If split structure exists**: Read outline/index.md, outline/acts.md, outline/chapters.md, outline/arcs.md
+- **Otherwise**: Read outline.md (if exists)
 - Major beats
-- Character arc
+- Character arc (reference `characters/[name].md` for detailed arc if needed)
 - How story ends (for full synopsis)
 
 ### 4. Determine Output Type

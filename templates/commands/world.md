@@ -24,6 +24,30 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Create comprehensive world-building documentation that establishes settings, rules (magic/technology), history, cultures, and all elements that make the story world consistent and immersive.
 
+**Single Source of Truth Principle**: World-building information should exist in ONE authoritative location. Use cross-references (markdown links) when referencing world elements from other files (scenes, characters, etc.).
+
+**See**: [navigation-guide.md](../navigation-guide.md) for the complete information location map.
+
+## Critical Restriction: Do Not Develop Outline or Chapter Structure
+
+**IMPORTANT**: This command MUST NOT develop, modify, or create:
+- Outline structure (acts, beats, chapter plans)
+- Chapter breakdowns or chapter summaries
+- Scene planning or scene breakdowns
+- Plot structure or story beats
+
+**Only the following commands are authorized to develop outline and chapter information:**
+- `/fiction.outline` - For creating and modifying story outlines
+- `/fiction.scenes` - For creating and modifying scene breakdowns
+
+**If outline or chapter development is needed**, direct the user to use the appropriate command (`/fiction.outline` or `/fiction.scenes`) instead.
+
+**This command should:**
+- Reference existing outline/scenes files when needed for context
+- NOT create new outline elements
+- NOT modify chapter structure
+- NOT plan new scenes or chapters
+
 ## Execution Steps
 
 ### 1. Setup
@@ -31,6 +55,10 @@ Create comprehensive world-building documentation that establishes settings, rul
 Run `{SCRIPT}` from repo root and parse JSON for:
 - `STORY_DIR`: Path to the story directory
 - `PREMISE_FILE`: Path to premise.md
+
+**Navigation Setup**:
+- Create `STORY_DIR/navigation-guide.md` from `.fiction/templates/navigation-guide.md` if it doesn't exist
+- This file will serve as the master index for all story information
 
 ### 2. Load Language & Style Configuration (CRITICAL)
 
@@ -68,17 +96,41 @@ Based on user input and story needs, identify focus:
 
 Create `STORY_DIR/world/` directory if needed.
 
+**Directory Structure** (creates these as needed):
+```
+world/
+├── world-bible.md              # Main world document (single source of truth)
+├── events/                     # Detailed historical event files (optional)
+│   └── [event-name].md
+├── magic/                      # Detailed spell/ability files (optional)
+│   └── [spell-name].md
+├── cultures/                   # Detailed culture files (optional, if needed)
+│   └── [culture-name].md
+└── locations/                  # Detailed location files (optional, if needed)
+    └── [location-name].md
+```
+
+**Note**: Only create subdirectories as needed. Simple stories may only need world-bible.md. Complex world-building benefits from separate event and magic files.
+    └── [spell-name].md
+```
+
 **Core World Bible** (`world/world-bible.md`):
 Use `.fiction/templates/world-template.md` as structure.
 
+**Cross-Reference System**:
+- **For major historical events** that need extensive detail (multiple factions, complex timeline, character involvement):
+  - Create separate files in `world/events/[event-name].md` using `.fiction/templates/world-event-template.md`
+  - Link from world-bible.md timeline: `[Event Name](events/event-name.md)`
+  - This keeps world-bible.md manageable while providing detailed context
+
+- **For specific spells/abilities** that are complex or frequently used:
+  - Create separate files in `world/magic/[spell-name].md` using `.fiction/templates/magic-ability-template.md`
+  - Link from world-bible.md magic system: `[Spell Name](magic/spell-name.md)`
+  - Include mechanics, costs, counters, and story usage
+
 **Optional Specialized Documents** (create as needed):
-- `world/magic-system.md` - If magic exists
-- `world/technology.md` - If technology is significant
 - `world/cultures/[culture-name].md` - For distinct cultures
-- `world/locations/[location-name].md` - For key locations
-- `world/history.md` - For detailed timeline
-- `world/bestiary.md` - For creatures/beings
-- `world/organizations.md` - For factions/groups
+- `world/locations/[location-name].md` - For key locations requiring extensive detail
 
 ### 5. World-Building by Category
 
@@ -142,6 +194,24 @@ Map world elements to story needs:
 - Which locations are scene-critical?
 - Which world rules affect plot?
 - What world elements reveal theme?
+
+**Cross-Reference Creation**:
+When world elements connect to other story documents:
+
+```markdown
+<!-- In world-bible.md, link to where elements are used -->
+- **Story Scenes Using This Location**: [Scene 3](../scenes/ch01-05.md#scene-003)
+- **Characters from This Culture**: [Protagonist](../characters/protagonist.md)
+- **Timeline References**: Link events from timeline table to detailed event files
+
+<!-- In other files, link back to world-bible.md -->
+<!-- From scenes/ch01-05.md: -->
+The scene takes place in [The Rusty Anchor](../world/world-bible.md#key-locations)...
+During [the Revolution](../world/events/1847-revolution.md)...
+She cast [Lumina's Shield](../world/magic/luminas-shield.md)...
+```
+
+**Reference Tracking**: Add "Referenced In" sections to detailed event and magic files listing all scenes, characters, and prose that reference them.
 
 ### 9. Validation
 

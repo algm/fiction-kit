@@ -113,11 +113,11 @@ if ($BranchName.Length -gt 244) {
     $BranchName = "$StoryNum-$BranchSuffix"
 }
 
-# Create branch
+# Branch creation intentionally skipped. We only use the name for directory structure and FICTION_STORY.
 if ($HasGit) {
-    git checkout -b $BranchName
+    Write-Warning "[fiction] Info: Not creating a git branch; using '$BranchName' only for story folder naming."
 } else {
-    Write-Warning "[fiction] Git not detected; skipped branch creation for $BranchName"
+    Write-Warning "[fiction] Git not detected; skipped branch creation for $BranchName (expected)."
 }
 
 # Create story directory structure

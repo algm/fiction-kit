@@ -21,15 +21,43 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Goal: Detect and reduce ambiguity or missing elements in the story premise, characters, and world-building, recording clarifications directly in the appropriate files.
 
+**Single Source of Truth Principle**: Information should exist in ONE authoritative location. Use cross-references (markdown links) when referencing elements from other files.
+
+**See**: [navigation-guide.md](../navigation-guide.md) for the complete information location map.
+
+## Critical Restriction: Do Not Develop Outline or Chapter Structure
+
+**IMPORTANT**: This command MUST NOT develop, modify, or create:
+- Outline structure (acts, beats, chapter plans)
+- Chapter breakdowns or chapter summaries
+- Scene planning or scene breakdowns
+- Plot structure or story beats
+
+**Only the following commands are authorized to develop outline and chapter information:**
+- `/fiction.outline` - For creating and modifying story outlines
+- `/fiction.scenes` - For creating and modifying scene breakdowns
+
+**If outline or chapter development is needed**, direct the user to use the appropriate command (`/fiction.outline` or `/fiction.scenes`) instead.
+
+**This command should:**
+- Reference existing outline/scenes files when needed for context
+- NOT create new outline elements
+- NOT modify chapter structure
+- NOT plan new scenes or chapters
+
 Note: This development workflow is best run BEFORE `/fiction.outline`. If the user explicitly states they are doing exploratory writing (discovery/pantsing), you may proceed with less structure, but warn that revision may be needed later.
 
 Execution steps:
 
 1. Run `{SCRIPT}` from repo root **once**. Parse JSON for:
    - `STORY_DIR`
-   - `PREMISE_FILE`
-   - (Optionally capture `OUTLINE_FILE`, `SCENES_FILE` for future chained flows)
+   - `PREMISE_FILE` (or `PREMISE` if using paths-only mode)
+   - Construct paths from STORY_DIR: `STORY_DIR/outline.md` (or `STORY_DIR/outline/index.md` if split), `STORY_DIR/scenes.md` (or `STORY_DIR/scenes/index.md` if split)
    - If JSON parsing fails, abort and instruct user to re-run `/fiction.premise`.
+   
+   **Navigation Setup**:
+   - Ensure `STORY_DIR/navigation-guide.md` exists (create from template if needed)
+   - Use navigation-guide.md to locate authoritative information sources
 
 2. Load the premise file and any existing character/world documents. 
    
@@ -114,14 +142,20 @@ Execution steps:
      - You reach 5 asked questions
 
 5. Integration after EACH accepted answer:
+   - **Consult navigation-guide.md** to determine the single source of truth location
    - Determine the best location for the clarification:
-     - Character detail → characters/[name].md (create if needed)
-     - World detail → world/[aspect].md (create if needed)  
-     - Plot detail → premise.md
-     - Style detail → /memory/principles.md
+     - Character detail → `characters/[name].md` (create if needed, link from other files)
+     - World detail → `world/world-bible.md` or `world/events/[event].md` or `world/magic/[spell].md` (create if needed, link from other files)
+     - Plot detail → `premise.md`
+     - Style detail → `/memory/principles.md`
    - Update the appropriate file immediately
+   - **Create cross-references**: When information connects to other files, use markdown links:
+     - Character references world event: Link to `world/events/[event].md`
+     - Scene references character: Link to `characters/[name].md`
+     - World element used in plot: Link from premise.md to world file
    - Add a `## Development Session [DATE]` section if logging to premise.md
    - Preserve existing content and formatting
+   - **Never duplicate information** - reference it via links instead
 
 6. Validation (after each write):
    - No contradictions with existing content

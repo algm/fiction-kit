@@ -22,23 +22,35 @@ $ARGUMENTS
 
 You **MUST** consider the user input before proceeding (if not empty).
 
+## Goal
+
+Generate scene breakdowns that serve as the **single source of truth** for scene planning, with cross-references to all supporting materials.
+
+**Cross-Reference System**: Scenes link to characters, world elements, and events. When prose is written, `drafts/prose-index.md` will link back to these scene plans.
+
+**See**: [navigation-guide.md](../navigation-guide.md) for the complete information location map.
+
 ## Outline
 
 1. **Setup**: Run `{SCRIPT}` from repo root and parse STORY_DIR and AVAILABLE_DOCS list. All paths must be absolute.
    
+   **Navigation Setup**:
+   - Ensure `STORY_DIR/navigation-guide.md` exists (create from template if needed)
+   - Check if `STORY_DIR/drafts/` directory exists; create if needed
+   - Prepare to create `STORY_DIR/drafts/prose-index.md` from `.fiction/templates/prose-index-template.md`
+   
    **Determine scenes structure**:
-   - **Single-file**: Use scenes.md for shorter stories (default, recommended for < 30 scenes total)
-   - **Split structure**: Use multiple scene files in `scenes/` directory for longer stories (recommended for 30+ scenes):
+   - **Split structure** (default): Use multiple scene files in `scenes/` directory:
      - `scenes/index.md` - Overview, tracking, pacing analysis
      - `scenes/ch01-05.md` - Scenes for chapters 1-5 (typically Act I)
      - `scenes/ch06-12.md` - Scenes for chapters 6-12 (typically Act II-A)
      - `scenes/ch13-18.md` - Scenes for chapters 13-18 (typically Act II-B)
      - `scenes/ch19-24.md` - Scenes for chapters 19-24 (typically Act III)
      - Adjust chapter groupings based on actual story structure
+   - **Single-file**: Use scenes.md for shorter stories (use only if user specifies "--single")
    
-   **Note**: Stories with 20+ chapters (outline split recommended) typically benefit from split scenes too.
    If user specifies preference with "--split" or "--single" in arguments, honor that.
-   Otherwise, suggest split structure for stories with many chapters or complex scene requirements.
+   Otherwise, use split structure by default.
 
 2. **Load story documents**: Read from STORY_DIR:
    - **Required**: premise.md (concept, characters overview, **Language & Style Configuration**)
@@ -85,9 +97,23 @@ You **MUST** consider the user input before proceeding (if not empty).
      - Each file contains detailed scene breakdowns for its chapters
      - Include transition notes between sections
    - Ensure consistent Language & Style section in all files
-   - Cross-reference files appropriately
+   - **Add cross-references**: Each scene should include a **References** field linking to:
+     - Characters involved (link to `characters/[name].md`)
+     - Locations used (link to `world/world-bible.md#key-locations`)
+     - Historical events referenced (link to `world/events/[event].md` or timeline)
+     - Magic/tech used (link to `world/world-bible.md#magic-system` or specific ability files)
+     - Research materials (link to `research/[topic].md`)
 
-5. **Report**: Output path(s) to generated scenes file(s) and summary:
+5. **Create Prose Tracking Infrastructure**:
+   - Create `STORY_DIR/drafts/` directory if it doesn't exist
+   - Create `STORY_DIR/drafts/scenes/` directory for individual scene prose files
+   - Create `STORY_DIR/drafts/prose-index.md` from `.fiction/templates/prose-index-template.md`:
+     - Initialize with scene list from scenes breakdown
+     - Set all scenes to "Not Started" status
+     - Prepare References column for tracking
+   - This enables scene-by-scene drafting workflow
+
+6. **Report**: Output path(s) to generated scenes file(s) and summary:
    - Note whether using single-file or split structure
    - If split: list all scene files created
    - Total scene count
@@ -95,6 +121,43 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Scene type distribution
    - Emotional arc summary
    - Suggested drafting approach
+
+### Inserting or moving scenes/chapters
+
+**When inserting new scenes in planning**:
+1. **Identify target chapter**: Determine which chapter section in `scenes.md` or `scenes/chXX-XX.md` to add the scene
+2. **Assign scene ID**: Use next available scene ID (S###) maintaining sequential order within the chapter
+3. **Add scene entry**: Insert the scene entry in the correct position within the chapter section, following the required scene format
+4. **Update scene count**: Adjust any scene statistics or tracking in `scenes/index.md` (if split structure)
+5. **If prose already exists**: When the scene is later drafted, ensure prose file uses contiguous numbering `c[NNN]s[MMM].md` within that chapter directory
+
+**When moving scenes between chapters in planning**:
+1. **Update planning file**: Move the scene entry from source chapter section to destination chapter section in `scenes.md` or `scenes/chXX-XX.md`
+2. **Reassign scene ID if needed**: If scene IDs are sequential per chapter, reassign to maintain order in new chapter
+3. **Update chapter references**: Update any chapter-specific notes or cross-references in the scene entry
+4. **If prose exists**: 
+   - Move the prose file from `drafts/scenes/c[OLD]/c[OLD]s[MMM].md` to `drafts/scenes/c[NEW]/c[NEW]s[MMM].md`
+   - Renumber scene files in destination chapter to maintain contiguous numbering
+   - Update the **Chapter** field in the scene prose file metadata
+5. **Update prose-index**: Update `drafts/prose-index.md` with the new path, chapter number, and status
+6. **Update statistics**: Adjust scene counts and tracking in `scenes/index.md` (if split structure)
+
+**When inserting new chapters in planning**:
+1. **Add to outline**: First add the chapter to `outline.md` or `outline/chapters.md` with chapter goal, POV, and word target
+2. **Create chapter section**: Add a new chapter section in `scenes.md` or create/update appropriate `scenes/chXX-XX.md` file
+3. **Add scenes**: Add all scenes for the new chapter following the scene format
+4. **Update structure**: If using split structure, ensure `scenes/index.md` reflects the new chapter count and update chapter groupings if needed
+5. **Renumber if needed**: If inserting in the middle, update chapter numbers in subsequent chapters in both outline and scenes files
+
+**After any insert/move operation**:
+1. **Rebuild outputs**: Run `make chapters` to rebuild chapter files in `drafts/chapters/`
+2. **Rebuild book**: If needed, run `make book` to rebuild the complete book file
+3. **Verify consistency**: 
+   - Check that all scene IDs are unique and properly ordered
+   - Verify all scene References fields point to valid character/world files
+   - Ensure chapter numbers are consistent between outline and scenes files
+   - Check that `drafts/prose-index.md` paths are correct (if prose exists)
+4. **Update tracking**: Adjust any scene statistics, pacing analysis, or tracking tables in `scenes/index.md` (if split structure)
 
 Context for scene generation: {ARGS}
 
@@ -116,6 +179,33 @@ Every scene MUST strictly follow this format:
   - **Outcome**: [Yes-but / No-and / Yes / No]
   - **Summary**: [2-3 sentence description]
   - **Emotional beat**: [Reader emotion target]
+  - **References**: [POV char](../characters/name.md), [Location](../world/world-bible.md#locations), [Event](../world/events/event.md)
+```
+
+**New: References Field** (REQUIRED):
+List all references this scene will need for drafting:
+- **Characters**: Link to character files for POV and other characters in the scene
+- **Locations**: Link to world-bible.md locations section or detailed location files
+- **Historical Context**: Link to event files or timeline if scene references history
+- **Magic/Tech**: Link to magic system or specific ability files if used
+- **Research**: Link to research files if scene requires external knowledge
+
+**Purpose of References Field**:
+1. Helps writers know what materials to review before drafting
+2. Ensures consistency with established world/characters
+3. Populates prose-index.md automatically when drafting
+4. Enables `/fiction.review` to validate scene consistency
+
+**Example**:
+```markdown
+- [ ] S015 [Maria] **Confrontation at the Plaza** - Plaza Mayor, Evening
+  - **Type**: Action
+  - **Goal**: Confront the Guild leader about the murders
+  - **Conflict**: Guild members attempt to stop her
+  - **Outcome**: No-and (She's captured and learns the truth is worse)
+  - **Summary**: Maria confronts the Guild in the plaza. A fight erupts. She's overpowered but hears them admit to the conspiracy before being captured.
+  - **Emotional beat**: Shock, fear, determination
+  - **References**: [Maria](../characters/maria.md), [Guild Leader](../characters/guild-leader.md), [Plaza Mayor](../world/world-bible.md#key-locations), [Fire Binding](../world/magic/fire-binding.md), [The Guild](../world/world-bible.md#organizations)
 ```
 
 ### Scene Types

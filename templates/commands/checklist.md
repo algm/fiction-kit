@@ -21,6 +21,26 @@ scripts:
 - ✅ "Does each scene have a clear purpose (plot/character/theme)?"
 - ✅ "Are character motivations consistent across all scenes?"
 
+## Critical Restriction: Do Not Develop Outline or Chapter Structure
+
+**IMPORTANT**: This command MUST NOT develop, modify, or create:
+- Outline structure (acts, beats, chapter plans)
+- Chapter breakdowns or chapter summaries
+- Scene planning or scene breakdowns
+- Plot structure or story beats
+
+**Only the following commands are authorized to develop outline and chapter information:**
+- `/fiction.outline` - For creating and modifying story outlines
+- `/fiction.scenes` - For creating and modifying scene breakdowns
+
+**If outline or chapter development is needed**, direct the user to use the appropriate command (`/fiction.outline` or `/fiction.scenes`) instead.
+
+**This command should:**
+- Reference existing outline/scenes files when needed for context
+- NOT create new outline elements
+- NOT modify chapter structure
+- NOT plan new scenes or chapters
+
 ## User Input
 
 ```text
@@ -48,15 +68,16 @@ You **MUST** consider the user input before proceeding (if not empty).
    Skip questions if already clear from `$ARGUMENTS`.
 
 4. **Load Story Context**: Read from STORY_DIR:
-   - premise.md: Core concept, characters, conflict
+   - **Navigation Setup**: Consult `STORY_DIR/navigation-guide.md` to locate authoritative information sources
+   - premise.md: Core concept, characters, conflict (single source for story foundation)
    - **Outline files** (load appropriate structure):
      - If split structure exists: Read outline/index.md, outline/acts.md, outline/chapters.md, outline/arcs.md
      - Otherwise: Read outline.md (if exists)
    - **Scenes files** (load appropriate structure):
      - If split structure exists: Read scenes/index.md and scenes/chXX-XX.md files
      - Otherwise: Read scenes.md (if exists)
-   - characters/ (if exists): Character profiles
-   - world/ (if exists): World-building docs
+   - characters/ (if exists): Character profiles (single source: `characters/[name].md`)
+   - world/ (if exists): World-building docs (single source: `world/world-bible.md`, `world/events/[event].md`, `world/magic/[spell].md`)
 
 5. **Generate Checklist** in the **Writing Language**:
    - Create `STORY_DIR/checklists/` directory if needed

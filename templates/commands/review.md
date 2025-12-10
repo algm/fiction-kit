@@ -17,6 +17,30 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Identify inconsistencies, plot holes, character issues, timeline problems, and underspecified elements across story artifacts before or during drafting. This command helps ensure story coherence and quality.
 
+**New: Cross-Reference Validation**: Verify that all markdown links between files are valid and that information is not duplicated (single source of truth principle).
+
+**See**: [navigation-guide.md](../navigation-guide.md) for the authoritative information location map.
+
+## Critical Restriction: Do Not Develop Outline or Chapter Structure
+
+**IMPORTANT**: This command MUST NOT develop, modify, or create:
+- Outline structure (acts, beats, chapter plans)
+- Chapter breakdowns or chapter summaries
+- Scene planning or scene breakdowns
+- Plot structure or story beats
+
+**Only the following commands are authorized to develop outline and chapter information:**
+- `/fiction.outline` - For creating and modifying story outlines
+- `/fiction.scenes` - For creating and modifying scene breakdowns
+
+**If outline or chapter development is needed**, direct the user to use the appropriate command (`/fiction.outline` or `/fiction.scenes`) instead.
+
+**This command should:**
+- Reference existing outline/scenes files when needed for context
+- NOT create new outline elements
+- NOT modify chapter structure
+- NOT plan new scenes or chapters
+
 ## Operating Constraints
 
 **STRICTLY READ-ONLY**: Do **not** modify any files. Output a structured analysis report. Offer remediation suggestions that user must explicitly approve.
@@ -30,6 +54,7 @@ Identify inconsistencies, plot holes, character issues, timeline problems, and u
 Run `{SCRIPT}` once from repo root and parse JSON for STORY_DIR and AVAILABLE_DOCS. Derive absolute paths:
 
 - PREMISE = STORY_DIR/premise.md
+- NAVIGATION = STORY_DIR/navigation-guide.md (if exists)
 - **OUTLINE**: Check for split structure first:
   - If STORY_DIR/outline/index.md exists: Read outline/index.md, outline/acts.md, outline/chapters.md, outline/arcs.md
   - Otherwise: Read STORY_DIR/outline.md
@@ -37,8 +62,9 @@ Run `{SCRIPT}` once from repo root and parse JSON for STORY_DIR and AVAILABLE_DO
   - If STORY_DIR/scenes/index.md exists: Read scenes/index.md and all scenes/chXX-XX.md files
   - Otherwise: Read STORY_DIR/scenes.md
 - CHARACTERS = STORY_DIR/characters/
-- WORLD = STORY_DIR/world/
-- DRAFTS = STORY_DIR/drafts/
+- WORLD = STORY_DIR/world/ (including world/events/ and world/magic/ subdirectories)
+- DRAFTS = STORY_DIR/drafts/ (including drafts/scenes/ and prose-index.md)
+- RESEARCH = STORY_DIR/research/
 
 **CRITICAL**: Also load `/memory/principles.md` to verify:
 - **Writing Language**: Is all content in the correct language?
@@ -99,15 +125,42 @@ Create internal representations for analysis:
 
 Focus on high-signal findings. Limit to 50 findings; aggregate overflow.
 
-#### A. Character Consistency
+#### A. Cross-Reference Validation (NEW)
+
+**Broken Links**:
+- Scan all markdown files for `[text](path)` patterns
+- Verify each linked file/section exists
+- Report broken links with source and target
+
+**Information Duplication**:
+- Check for same information in multiple files
+- Examples: Timeline duplicated outside world-bible.md, character details repeated in scenes
+- Flag violations of single source of truth principle
+
+**Missing References**:
+- Scenes that use world elements (locations, magic, events) without linking in References field
+- Character backgrounds that reference events without linking to world/events/
+- Prose files missing entries in prose-index.md
+
+**Navigation Guide Accuracy**:
+- If navigation-guide.md exists, verify paths in information location map are correct
+- Check that claimed "single source" files actually exist
+
+**Reference Tracking**:
+- For each scene in prose-index.md, verify references listed actually exist
+- Check that References field in scene planning matches what's in prose-index.md
+
+#### B. Character Consistency
 
 - Character behaves contrary to established traits without justification
 - Character voice inconsistent between documents
 - Character knowledge inconsistent (knows things they shouldn't)
 - Missing character motivation for key decisions
 - Arc promises in outline not reflected in scenes
+- **NEW**: Character references in scenes don't link to character files
+- **NEW**: Character abilities/magic use doesn't match what's defined in world/
 
-#### B. Plot Coherence
+#### C. Plot Coherence
 
 - Plot holes: actions without setup, or setup without payoff
 - Causality breaks: events that don't logically follow
@@ -129,6 +182,9 @@ Focus on high-signal findings. Limit to 50 findings; aggregate overflow.
 - Setting contradictions
 - Cultural/historical anachronisms
 - Geography inconsistencies
+- **NEW**: Timeline events in prose don't match world-bible.md#timeline
+- **NEW**: Magic/tech usage violates rules in world-bible.md#magic-system
+- **NEW**: Location descriptions contradict world-bible.md#key-locations
 
 #### E. Language & Style Compliance
 

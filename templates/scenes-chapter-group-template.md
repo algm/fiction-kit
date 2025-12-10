@@ -33,6 +33,7 @@
   - **Outcome**: [Yes-but / No-and / Yes / No]
   - **Summary**: [2-3 sentence scene description - what happens, key dialogue/action, emotional arc]
   - **Emotional beat**: [How reader should feel - e.g., intrigued, tense, hopeful]
+  - **References**: [POV character](../../characters/pov-name.md), [Location](../../world/world-bible.md#key-locations), [Other ref if needed]
 
 - [ ] S### [POV] **[Scene Name]** - [Location], [Time]
   - **Type**: [Scene type]
@@ -41,6 +42,7 @@
   - **Outcome**: [Result]
   - **Summary**: [Scene description]
   - **Emotional beat**: [Reader emotion]
+  - **References**: [Links to characters, world elements, etc.]
 
 - [ ] S### [POV] **[Scene Name / Chapter End]** - [Location], [Time]
   - **Type**: [Scene type]
@@ -50,6 +52,7 @@
   - **Summary**: [Scene description]
   - **Emotional beat**: [Reader emotion]
   - **Hook**: [What makes reader turn the page - cliffhanger, question raised, tension established]
+  - **References**: [Links]
 
 **Chapter Checkpoint**: [Where protagonist is now, what they've learned, what they face next]
 

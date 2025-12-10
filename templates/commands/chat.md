@@ -21,6 +21,30 @@ Provide an interactive space for:
 3. **Interview**: Ask characters questions to reveal backstory and motivation
 4. **Scene exploration**: Test character interactions before formal drafting
 
+**Single Source of Truth Principle**: Character information lives in `characters/[name].md`. Update these files with discoveries from chat sessions.
+
+**See**: [navigation-guide.md](../navigation-guide.md) for the complete information location map.
+
+## Critical Restriction: Do Not Develop Outline or Chapter Structure
+
+**IMPORTANT**: This command MUST NOT develop, modify, or create:
+- Outline structure (acts, beats, chapter plans)
+- Chapter breakdowns or chapter summaries
+- Scene planning or scene breakdowns
+- Plot structure or story beats
+
+**Only the following commands are authorized to develop outline and chapter information:**
+- `/fiction.outline` - For creating and modifying story outlines
+- `/fiction.scenes` - For creating and modifying scene breakdowns
+
+**If outline or chapter development is needed**, direct the user to use the appropriate command (`/fiction.outline` or `/fiction.scenes`) instead.
+
+**This command should:**
+- Reference existing outline/scenes files when needed for context
+- NOT create new outline elements
+- NOT modify chapter structure
+- NOT plan new scenes or chapters
+
 ## Execution Steps
 
 ### 1. Setup
@@ -35,13 +59,20 @@ Read `/memory/principles.md` and extract:
 - **Writing Style**: Affects character voice and responses
 - **Regional Variant**: For culturally appropriate expressions
 
+**ABORT if Writing Language not defined** in principles.md.
+
 ### 3. Load Character Context
 
+**Navigation Setup**:
+- Consult `STORY_DIR/navigation-guide.md` to locate character files
+- **Single source of truth**: Character profiles live in `characters/[name].md` only
+
 If a character is specified:
-- Read `STORY_DIR/characters/[name].md`
-- Load voice notes, personality, speech patterns
-- Note relationships to other characters
-- Load wound, lie, truth for psychological depth
+- Read `STORY_DIR/characters/[name].md` (authoritative source for all character information)
+- Load voice notes, personality, speech patterns (from Dialogue & Voice section)
+- Note relationships to other characters (link to other character files if referenced)
+- Load wound, lie, truth for psychological depth (from Psychology section)
+- **Cross-reference world elements**: If character background references events or locations, load from `world/events/[event].md` or `world/world-bible.md#key-locations`
 
 If no character specified:
 - Read PREMISE_FILE for character overview
@@ -124,10 +155,12 @@ Una que llevo arrastrando demasiados años. [looks away] Ahora muévete.
 ### 8. Capture Insights
 
 After session (or on request), offer to capture:
-- New voice insights → update character profile
-- Backstory discoveries → add to character background
-- Relationship revelations → update relationship notes
-- Story ideas → note for premise/outline
+- **Update single source**: All character information goes to `characters/[name].md` only
+- New voice insights → update character profile (Dialogue & Voice section)
+- Backstory discoveries → add to character background (Background section)
+- Relationship revelations → update relationship notes (Relationships section, link to other character files)
+- Story ideas → note for premise/outline (update premise.md or outline files)
+- **Create cross-references**: If discoveries reference world events or locations, link to `world/events/[event].md` or `world/world-bible.md`
 
 Output format:
 ```markdown
