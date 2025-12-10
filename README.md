@@ -198,6 +198,139 @@ OUTPUT ────────────────────────�
 
 ## 🌍 Language & Style Support
 
+Fiction Kit adapts to your **writing language**, **style**, and **methodology** to provide tailored guidance at every stage.
+
+### Supported Writing Languages
+
+Write in any language with appropriate cultural and regional variants:
+- 🇺🇸 **English** (US, UK, Australian, Canadian)
+- 🇪🇸 **Spanish** (Español - Spain, Latin American)
+- 🇫🇷 **French** (Français - France, Québécois, African)
+- 🇩🇪 **German** (Deutsch - Germany, Austrian, Swiss)
+- 🇮🇹 **Italian** (Italiano)
+- 🇧🇷 **Portuguese** (Português - Brazilian, European)
+- 🇯🇵 **Japanese** (日本語)
+- 🇨🇳 **Chinese** (中文 - Simplified, Traditional)
+- 🌐 **Custom** - Any other language
+
+### Writing Styles
+
+Choose the style that matches your creative goals. Fiction Kit will adapt **prompts, structure recommendations, and prose guidance** to your chosen style:
+
+#### **Literary Fiction** (`literary`)
+**Best Practices Applied:**
+- Emphasis on **thematic depth** and **character psychology**
+- **Prose quality** over plot mechanics
+- **Subtle, nuanced conflict** (often internal)
+- **Symbolic and metaphorical** language
+- Non-linear or **experimental structures** when appropriate
+- **Ambiguous or open-ended** resolutions
+- Focus on **intellectual and emotional** engagement
+
+**What Changes:**
+- Premise focuses on thematic questions vs. high-concept hooks
+- Outline allows for episodic or non-linear structures
+- Character development prioritizes psychological complexity
+- Prose guidance emphasizes evocative language and subtext
+
+#### **Commercial Fiction** (`commercial`)
+**Best Practices Applied:**
+- **Clear, engaging** storytelling with **broad appeal**
+- **Strong plot** and **fast pacing**
+- **Active protagonists** with **clear goals**
+- **Satisfying payoffs** for all setup
+- **Page-turning** chapter endings
+- **Genre expectations** delivered
+
+**What Changes:**
+- Premise requires high-concept, marketable loglines
+- Outline follows proven three-act or Save the Cat structure
+- Character development ensures relatable, sympathetic protagonists
+- Prose guidance emphasizes clarity and accessibility
+
+#### **Genre-Specific** (`genre:[subgenre]`)
+
+**Fantasy** (`genre:fantasy`)
+- **Magic systems** with clear rules and costs
+- **Rich world-building** (geography, cultures, history)
+- **Hero's journey** or chosen one structures
+- **Epic or personal stakes**
+- Integration of wonder and discovery
+
+**Thriller** (`genre:thriller`)
+- **Constant tension** and **escalating danger**
+- **Ticking clock** pressure throughout
+- **Fast pacing** with short chapters
+- **Smart protagonists** vs. worthy opponents
+- **Twists and turns** at key beats
+
+**Other Genres:** Science Fiction, Romance, Mystery, Horror (similar targeted guidance)
+
+### Story Development Methodologies
+
+Choose how you want to plan your story. Fiction Kit provides **methodology-specific guidance** for outlining and development:
+
+#### **Snowflake Method** (`snowflake`)
+**Best Practices Applied:**
+- Start with **one-sentence summary**, expand progressively
+- **Step-by-step** character development (motivation → goal → conflict → epiphany)
+- **Detailed scene list** with goal-conflict-disaster structure
+- **Iterative refinement** at each layer
+- Strong focus on **causality** ("because X, therefore Y")
+
+**What Changes:**
+- Premise development starts minimal, expands in layers
+- Outline built from paragraph → page → four pages → scene list
+- Character profiles developed in stages (summary → full depth)
+
+#### **Beat Sheet Method** (`beat-sheet`)
+**Best Practices Applied:**
+- **15-beat structure** (Save the Cat / 3-Act)
+- **Precise timing** (beats hit at specific percentages)
+- **Midpoint** as crucial turning point
+- **All Is Lost** moment at 75%
+- **Character arc** mapped to structural beats
+- **B Story** carries theme
+
+**What Changes:**
+- Premise focuses on high-concept logline
+- Outline hits all 15 beats at correct percentages
+- Strong emphasis on Midpoint and All Is Lost moments
+- Scene planning aligns with beat structure
+
+#### **Discovery Writing** (`discovery`)
+**Best Practices Applied:**
+- **Minimal upfront planning** - trust creative instincts
+- **Character-driven** discovery
+- **"North Star" approach** - one guiding element
+- **Reverse outlining** after draft
+- **Iterative drafting** with extensive revision
+- Embrace **organic story evolution**
+
+**What Changes:**
+- Premise allows for evolving concepts
+- Outline created **after first draft** (reverse outline)
+- Character arcs discovered through writing
+- Emphasis on revision as where structure emerges
+
+### How It Works
+
+When you initialize a project with `fiction init`, your language, style, and methodology choices are saved to `.fiction/config.json`. 
+
+**Every Fiction Kit command automatically:**
+
+1. **Loads your configuration** from `principles.md` and `premise.md`
+2. **Reads style-specific best practices** from `.fiction/templates/guidance/styles/`
+3. **Reads methodology-specific guidance** from `.fiction/templates/guidance/methodologies/`
+4. **Reads genre-specific conventions** from `.fiction/templates/guidance/genres/` (for genre styles)
+5. **Applies this guidance** to prompt generation and AI instructions
+
+**Example:**
+- If you chose `--style literary --method snowflake`, the `/fiction.premise` command will emphasize thematic questions over hooks, and the `/fiction.outline` command will guide you through Snowflake's step-by-step expansion process.
+- If you chose `--style genre:thriller --method beat-sheet`, the `/fiction.outline` command will ensure you hit thriller-specific beats (ticking clock, constant tension) at the precise Save the Cat percentages.
+
+This ensures that **every AI interaction** respects your creative vision and follows industry best practices for your chosen approach.
+
 ### Supported Languages
 
 Fiction Kit supports writing in any language. During initialization, select your writing language:
