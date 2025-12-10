@@ -218,4 +218,4 @@ With discovery writing:
 4. **Embrace revision** - where real work happens
 5. **Stay flexible** - let characters surprise you
 6. **Don't judge draft** - evaluation comes later
-7. **Set daily word goals** - maintain momentum
+7. **Consider daily writing goals if they help** - maintain momentum without constraint

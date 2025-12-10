@@ -24,7 +24,7 @@ When writing for **Literary Fiction**, focus on:
 - Master **show, don't tell** technique
 - Include rich **sensory details** that evoke mood and meaning
 - Layer **subtext** in dialogue and description
-- Consider techniques like: stream of consciousness, unreliable narration, temporal shifts
+- Consider techniques like: stream of consciousness, unreliable narration, temporal shifts, metafictional elements
 
 ### Character Development
 - Create **complex, contradictory** characters with **psychological depth**

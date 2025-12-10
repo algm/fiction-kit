@@ -7,7 +7,7 @@ The **Snowflake Method** starts simple and expands in progressive layers.
 ### For Premise Development
 
 **Step 1: One-Sentence Summary** (15 words or less)
-- Format: [PROTAGONIST] must [ACTION] or else [STAKES]
+- Format: `{PROTAGONIST} must {ACTION} or else {STAKES}`
 - Include protagonist, goal, and what's at stake
 - Make it compelling enough to sell the book
 - Use roles, not names yet

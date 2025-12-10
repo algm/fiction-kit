@@ -11,7 +11,13 @@ When writing **Thriller Fiction**, focus on:
 - **Smart protagonist** facing worthy opponent
 
 ### Premise Development
-- Common hooks: "ordinary person in extraordinary danger," "race against time," "conspiracy," "hunter becomes hunted," "truth no one believes"
+Common hooks:
+- "Ordinary person in extraordinary danger"
+- "Race against time to stop disaster"
+- "Conspiracy threatening protagonist/world"
+- "Hunter becomes hunted"
+- "One person can see the truth, no one believes them"
+- "Personal past comes back with deadly consequences"
 - Stakes must be: **Clear and immediate**, **Personal connection** to threat, **Escalating**, **Multiple levels** (personal/local/global), **Countdown element**
 
 ### Opening Requirements (First 10%)
