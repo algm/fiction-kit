@@ -27,6 +27,10 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Create comprehensive character profiles that establish identity, psychology, motivation, relationships, arc, and distinctive voice for each significant character.
 
+**Single Source of Truth Principle**: Each character's information should exist in ONE file (`characters/[character-name].md`). Use cross-references (markdown links) when referencing characters from other files.
+
+**See**: [navigation-guide.md](../navigation-guide.md) for the complete information location map.
+
 ## Execution Steps
 
 ### 1. Setup
@@ -34,6 +38,10 @@ Create comprehensive character profiles that establish identity, psychology, mot
 Run `{SCRIPT}` from repo root and parse JSON for:
 - `STORY_DIR`: Path to the story directory
 - `PREMISE_FILE`: Path to premise.md
+
+**Navigation Setup**:
+- Ensure `STORY_DIR/navigation-guide.md` exists (create from template if needed)
+- This file serves as the master index for locating character information
 
 ### 2. Load Language & Style Configuration (CRITICAL)
 
@@ -144,19 +152,69 @@ This is the engine of character arc.
 
 ### 7. Character-World Integration
 
-Connect character to world elements:
-- Where are they from? (location in world/)
-- What cultural elements shape them?
-- How do world rules affect them? (magic user? technology access?)
-- What organizations/factions are they part of?
+Connect character to world elements using **cross-references**:
+
+**Location Links**:
+- Birthplace: Link to `world/world-bible.md#key-locations`
+- Home: Link to relevant location
+- Significant places in background
+
+**Historical Event Links**:
+- Key life events that tie to world history: Link to `world/events/[event-name].md` or `world/world-bible.md#timeline`
+- "The Ghost" event if it involves historical context
+
+**Magic/Tech Links**:
+- Abilities or skills: Link to `world/world-bible.md#magic-system` or `world/magic/[ability-name].md`
+- Technology use or expertise
+
+**Organization Links**:
+- Memberships: Link to `world/world-bible.md#organizations`
+- Political affiliations
+
+**Character Relationship Links**:
+- Family members: Link to other character files `characters/[name].md`
+- Friends, enemies, love interests: Link to their profiles
+- Mentors: Link to their profiles
+
+**Example Cross-References**:
+```markdown
+<!-- In character file -->
+- **Birthplace**: [Barcelona](../world/world-bible.md#key-locations)
+- **Key Life Event**: Witnessed [the Plaza Massacre](../world/events/plaza-massacre.md) at age 12
+- **Abilities**: Trained in [Fire Binding](../world/magic/fire-binding.md)
+- **Relationships**: Daughter of [Maria Santos](maria-santos.md), enemy of [The Guild](../world/world-bible.md#organizations)
+```
 
 ### 8. Character-Story Integration
 
-Map character to story needs:
-- What scenes feature this character?
-- How do they affect protagonist's journey?
-- What theme do they embody or challenge?
-- What's their relationship to central conflict?
+Map character to story needs and **create forward references**:
+
+**Scene Appearances**:
+- Link to scenes where this character appears: `scenes/ch01-05.md#scene-X`
+- Link to prose files where they're featured: `drafts/scenes/s001-opening.md`
+
+**Plot Function**:
+- Link to relevant theme from premise: `premise.md#theme`
+- Connection to central conflict
+
+**Character Arc Tracking**:
+- Link to outline arcs: `outline/arcs.md` (if split structure) or `outline.md#character-arcs`
+
+**Example Story Integration**:
+```markdown
+<!-- In character file -->
+### First Appearance
+- **Scene**: [S001 - Opening Scene](../scenes/ch01-05.md#scene-001)
+- **Prose**: [Opening prose file](../drafts/scenes/s001-opening.md)
+
+### Key Scenes
+1. [S001](../scenes/ch01-05.md#scene-001) - Introduction
+2. [S015](../scenes/ch06-12.md#scene-015) - Revelation
+3. [S042](../scenes/ch13-18.md#scene-042) - Climax
+
+### Thematic Function
+Represents [redemption theme](../premise.md#theme)
+```
 
 ### 9. Validation
 

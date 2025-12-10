@@ -13,9 +13,25 @@ $ARGUMENTS
 
 You **MUST** consider the user input before proceeding (if not empty).
 
+## Goal
+
+Draft prose **scene by scene**, creating individual prose files in `drafts/scenes/` and tracking progress in `drafts/prose-index.md`.
+
+**Single Source of Truth**: 
+- Scene planning lives in `scenes/` directory (metadata, goals, conflicts)
+- Prose lives in `drafts/scenes/` directory (actual narrative)
+- `drafts/prose-index.md` connects planning to prose and tracks references
+
+**See**: [navigation-guide.md](../navigation-guide.md) for the complete information location map.
+
 ## Outline
 
 1. Run `{SCRIPT}` from repo root and parse STORY_DIR and AVAILABLE_DOCS list. All paths must be absolute.
+
+   **Prose Tracking Setup**:
+   - Verify `STORY_DIR/drafts/prose-index.md` exists (create from `.fiction/templates/prose-index-template.md` if needed)
+   - Verify `STORY_DIR/drafts/scenes/` directory exists (create if needed)
+   - Load prose-index.md to check which scenes are already drafted
 
 2. **Check checklists status** (if STORY_DIR/checklists/ exists):
    - Scan all checklist files in the checklists/ directory
@@ -59,43 +75,86 @@ You **MUST** consider the user input before proceeding (if not empty).
      - If Writing Style is `genre:scifi`, `genre:romance`, `genre:mystery`, or `genre:horror`, apply similar genre prose conventions
      - **Apply this guidance** to ALL prose generation throughout drafting
 
-4. **Drafts Directory Setup**:
-   - Create STORY_DIR/drafts/ directory if it doesn't exist
-   - Each chapter will be saved as `chapter-XX.md`
-   - Maintain draft metadata (word count, status, last edited)
+4. **Scene-by-Scene Drafting Setup**:
+   - Create STORY_DIR/drafts/scenes/ directory if it doesn't exist
+   - For each scene being drafted, create individual file: `drafts/scenes/s[###]-[scene-name].md`
+   - Use `.fiction/templates/scene-prose-template.md` as structure for each scene file
+   - Track all drafted scenes in `drafts/prose-index.md`
 
 5. Parse scenes structure and extract:
-   - **Chapters**: Ordered list with goals and POV
-   - **Scenes per chapter**: Scene details with all metadata (from appropriate file)
-   - **Pacing notes**: Tension levels and emotional beats
-   - **Word targets**: Per-chapter word count goals
-   
-   **Note**: If using split structure, load scenes from the appropriate scenes-chXX-XX.md file(s) as needed for each chapter.
+   - **Scenes**: Load from scenes/ files or scenes.md
+   - **For each scene, extract**:
+     - Scene ID (S###)
+     - Scene name
+     - POV character
+     - Location, time
+     - Goal, conflict, outcome
+     - Summary and emotional beat
+     - **References field**: All linked characters, world elements, events
 
-6. Execute drafting following the scene plan:
-   - **Chapter-by-chapter**: Complete each chapter before moving to the next
-   - **Scene-by-scene within chapters**: Write scenes in order
-   - **Follow principles.md**: Maintain voice, style, and rules throughout
-   - **Track word counts**: Compare against targets
-   - **Mark progress**: Update scenes.md as scenes are drafted
+6. Execute drafting **scene by scene**:
+   
+   **For each scene to draft**:
+   
+   a. **Prepare**:
+      - Read scene metadata from scenes file
+      - Extract References field links
+      - Load all referenced materials:
+        - Character files for voices and backgrounds
+        - World-bible.md sections for locations/magic/tech
+        - Event files for historical context
+        - Research files if linked
+      - Review principles.md for voice/style
+   
+   b. **Draft prose**:
+      - Create `drafts/scenes/s[###]-[scene-name].md` from template
+      - Fill in scene metadata section (chapter, POV, location, etc.)
+      - List all references consulted in References Consulted section
+      - **Write the prose** following:
+        - Scene summary and emotional beat from planning
+        - Character voices from character files
+        - World details from world-bible.md
+        - Writing Language and Style from principles.md
+        - **NO cross-reference links in the prose itself** - prose should be clean narrative
+   
+   c. **Update tracking**:
+      - Add scene metadata to prose file
+      - Update `drafts/prose-index.md`:
+        - Add row in Scene-to-Prose Mapping table
+        - Set prose file path
+        - Set status (Draft/In Progress)
+        - Copy references from scene References field
+        - Record word count
+        - Set last updated date
+      - Mark scene as complete in scenes file (check the box)
 
 7. **Drafting execution rules**:
    
-   **Before each chapter**:
-   - Review chapter goal and beats to hit
-   - Review POV character's voice (from characters/ if available)
-   - Note emotional arc for the chapter
+   **Scene Selection**:
+   - Draft scenes in story order (S001, S002, S003, etc.)
+   - Or draft specific scenes if user requests certain scenes/chapters
+   - Check prose-index.md to skip already-drafted scenes
    
-   **For each scene**:
-   - Write prose following the scene summary and emotional beat
+   **Reference Loading**:
+   - For each scene, load materials from the References field
+   - Character files: Voice, mannerisms, background
+   - World elements: Locations, magic/tech, history
+   - Research: Factual accuracy
+   
+   **Prose Writing**:
+   - Write in individual scene file: `drafts/scenes/s###-name.md`
+   - Follow scene-prose-template.md structure
+   - Use scene summary and emotional beat as guide
+   - Apply Writing Language and Writing Style
+   - **Keep prose clean** - no inline markdown links in the narrative
    - Include sensory details appropriate to setting
-   - End scenes with forward momentum (especially chapter-ending scenes)
-   - Maintain consistent POV and tense per principles.md
+   - Maintain POV and tense per principles.md
    
-   **After each chapter**:
-   - Save to drafts/chapter-XX.md
-   - Update word count tracking
-   - Mark scenes as complete in scenes.md
+   **After each scene**:
+   - Save scene prose file
+   - Update prose-index.md entry
+   - Mark scene complete in scenes file
+   - Update word count statistics
 
 8. **Voice, Style, and Language Enforcement**:
    - **WRITE ALL PROSE IN THE SPECIFIED WRITING LANGUAGE** (from principles.md)
