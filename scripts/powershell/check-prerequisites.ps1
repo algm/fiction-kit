@@ -81,16 +81,42 @@ if (-not (Test-Path $paths.STORY_DIR)) {
     exit 1
 }
 
-if (-not (Test-Path $paths.OUTLINE)) {
-    Write-Error "ERROR: outline.md not found in $($paths.STORY_DIR)"
+# Check for outline - accept either single file or split structure
+$outlineExists = $false
+$outlineSplit = $false
+if (Test-Path $paths.OUTLINE_INDEX) {
+    # Split structure detected
+    $outlineExists = $true
+    $outlineSplit = $true
+} elseif (Test-Path $paths.OUTLINE) {
+    # Single file structure
+    $outlineExists = $true
+    $outlineSplit = $false
+} else {
+    Write-Error "ERROR: No outline found in $($paths.STORY_DIR)"
     Write-Host "Run /fiction.outline first to create the story outline."
     exit 1
 }
 
-if ($RequireScenes -and -not (Test-Path $paths.SCENES)) {
-    Write-Error "ERROR: scenes.md not found in $($paths.STORY_DIR)"
-    Write-Host "Run /fiction.scenes first to create the scene breakdown."
-    exit 1
+# Check for scenes - accept either single file or split structure
+if ($RequireScenes) {
+    $scenesExists = $false
+    $scenesSplit = $false
+    if (Test-Path $paths.SCENES_INDEX) {
+        # Split structure detected
+        $scenesExists = $true
+        $scenesSplit = $true
+    } elseif (Test-Path $paths.SCENES) {
+        # Single file structure
+        $scenesExists = $true
+        $scenesSplit = $false
+    }
+    
+    if (-not $scenesExists) {
+        Write-Error "ERROR: No scenes found in $($paths.STORY_DIR)"
+        Write-Host "Run /fiction.scenes first to create the scene breakdown."
+        exit 1
+    }
 }
 
 # Build available docs list
@@ -115,8 +141,16 @@ if ((Test-Path $paths.DRAFTS_DIR) -and (Get-ChildItem $paths.DRAFTS_DIR -ErrorAc
     $docs += "drafts/"
 }
 
-if ($IncludeScenes -and (Test-Path $paths.SCENES)) {
-    $docs += "scenes.md"
+if ($IncludeScenes) {
+    if (Test-Path $paths.SCENES_INDEX) {
+        $docs += "scenes-index.md"
+        # Also include split scene files
+        Get-ChildItem -Path $paths.STORY_DIR -Filter "scenes-ch*.md" | ForEach-Object {
+            $docs += $_.Name
+        }
+    } elseif (Test-Path $paths.SCENES) {
+        $docs += "scenes.md"
+    }
 }
 
 # Output
