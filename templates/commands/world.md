@@ -44,6 +44,14 @@ Read PREMISE_FILE for:
 - Genre requirements (affects world-building depth)
 - Existing world elements
 
+- **Load Genre-Specific World-Building Guidance**:
+  - If Writing Style is `genre:fantasy`, read `.fiction/templates/guidance/genres/fantasy.md` for fantasy world-building requirements (magic systems, cultures, geography, history, economy)
+  - If Writing Style is `genre:scifi`, apply similar sci-fi world-building conventions (technology systems, future societies, scientific rigor)
+  - If Writing Style is `genre:thriller`, read `.fiction/templates/guidance/genres/thriller.md` for thriller setting requirements (atmospheric locations, supports tension and danger)
+  - If Writing Style is `literary`, read `.fiction/templates/guidance/styles/literary.md` for integrated, symbolic world-building approach
+  - If Writing Style is `commercial`, read `.fiction/templates/guidance/styles/commercial.md` for accessible world-building that supports plot
+  - **Apply this guidance** to world development throughout
+
 ### 3. Determine World-Building Scope
 
 Based on user input and story needs, identify focus:

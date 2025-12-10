@@ -50,6 +50,14 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Extract **Regional Variant** for idioms and spelling conventions
    - ALL generated prose MUST be in the specified Writing Language
    - ALL prose MUST follow the Writing Style conventions
+   
+   - **Load Style-Specific Prose Guidance**:
+     - If Writing Style is `literary`, read `.fiction/templates/guidance/styles/literary.md` for literary prose techniques
+     - If Writing Style is `commercial`, read `.fiction/templates/guidance/styles/commercial.md` for commercial prose requirements
+     - If Writing Style is `genre:fantasy`, read `.fiction/templates/guidance/genres/fantasy.md` for fantasy prose conventions
+     - If Writing Style is `genre:thriller`, read `.fiction/templates/guidance/genres/thriller.md` for thriller pacing and prose style
+     - If Writing Style is `genre:scifi`, `genre:romance`, `genre:mystery`, or `genre:horror`, apply similar genre prose conventions
+     - **Apply this guidance** to ALL prose generation throughout drafting
 
 4. **Drafts Directory Setup**:
    - Create STORY_DIR/drafts/ directory if it doesn't exist
