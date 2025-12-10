@@ -30,8 +30,12 @@ Identify inconsistencies, plot holes, character issues, timeline problems, and u
 Run `{SCRIPT}` once from repo root and parse JSON for STORY_DIR and AVAILABLE_DOCS. Derive absolute paths:
 
 - PREMISE = STORY_DIR/premise.md
-- OUTLINE = STORY_DIR/outline.md
-- SCENES = STORY_DIR/scenes.md
+- **OUTLINE**: Check for split structure first:
+  - If STORY_DIR/outline-index.md exists: Read outline-index.md, outline-acts.md, outline-chapters.md, outline-arcs.md
+  - Otherwise: Read STORY_DIR/outline.md
+- **SCENES**: Check for split structure first:
+  - If STORY_DIR/scenes-index.md exists: Read scenes-index.md and all scenes-chXX-XX.md files
+  - Otherwise: Read STORY_DIR/scenes.md
 - CHARACTERS = STORY_DIR/characters/
 - WORLD = STORY_DIR/world/
 - DRAFTS = STORY_DIR/drafts/
@@ -57,16 +61,15 @@ Abort with error if required files are missing.
 - Central conflict and stakes
 - Theme and setting
 
-**From outline.md:**
-- Structure and beat sheet
-- Chapter plan with POV assignments
-- Character arcs across acts
-- Subplot tracking
+**From outline files** (load appropriate structure):
+- **If split structure**: Read all outline files (index, acts, chapters, arcs)
+- **Otherwise**: Read outline.md
+- Extract: Structure and beat sheet, Chapter plan with POV assignments, Character arcs across acts, Subplot tracking
 
-**From scenes.md:**
-- Scene list with POV, goals, conflicts
-- Chapter organization
-- Emotional beats
+**From scenes files** (load appropriate structure):
+- **If split structure**: Read scenes-index.md and all scenes-chXX-XX.md files
+- **Otherwise**: Read scenes.md
+- Extract: Scene list with POV, goals, conflicts, Chapter organization, Emotional beats
 
 **From characters/ (if exists):**
 - Character profiles
