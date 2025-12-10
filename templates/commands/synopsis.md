@@ -17,6 +17,10 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Generate compelling synopsis content at various lengths for different purposes: pitching to agents, back cover copy, social media promotion, or personal reference.
 
+**Single Source of Truth Principle**: Reference story information from authoritative locations (premise.md, outline files, character files).
+
+**See**: [navigation-guide.md](../navigation-guide.md) for the complete information location map.
+
 ## Synopsis Types
 
 | Type | Length | Purpose | Includes Ending? |
@@ -46,7 +50,10 @@ Read `/memory/principles.md` and extract:
 
 ### 3. Load Story Content
 
-**From premise.md**:
+**Navigation Setup**:
+- Consult `STORY_DIR/navigation-guide.md` to locate authoritative story information
+
+**From premise.md** (single source for story foundation):
 - Logline (if exists)
 - Genre and subgenre
 - Target audience
@@ -54,9 +61,11 @@ Read `/memory/principles.md` and extract:
 - Central conflict and stakes
 - Theme
 
-**From outline.md** (if exists):
+**From outline files** (load appropriate structure):
+- **If split structure exists**: Read outline/index.md, outline/acts.md, outline/chapters.md, outline/arcs.md
+- **Otherwise**: Read outline.md (if exists)
 - Major beats
-- Character arc
+- Character arc (reference `characters/[name].md` for detailed arc if needed)
 - How story ends (for full synopsis)
 
 ### 4. Determine Output Type

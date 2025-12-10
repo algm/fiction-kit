@@ -24,6 +24,10 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Generate a complete, polished chapter draft by combining scene-level planning with prose generation, following all established voice, style, and character guidelines.
 
+**Single Source of Truth Principle**: Reference information from authoritative locations. Use cross-references when needed.
+
+**See**: [navigation-guide.md](../navigation-guide.md) for the complete information location map.
+
 ## Execution Steps
 
 ### 1. Setup
@@ -55,6 +59,9 @@ If not specified, suggest starting with the next undrafted chapter.
 
 ### 4. Load Chapter Context
 
+**Navigation Setup**:
+- Consult `STORY_DIR/navigation-guide.md` to locate authoritative information sources
+
 **From outline files** (load appropriate structure):
 - **If split structure exists**:
   - Read outline/chapters.md for chapter goal, emotional arc, POV, word target
@@ -67,14 +74,19 @@ If not specified, suggest starting with the next undrafted chapter.
   - Read appropriate scenes/chXX-XX.md file containing this chapter
 - **Otherwise**: Read scenes.md for all scenes for this chapter
 - Scene details: POV, type, goal, conflict, outcome, emotional beat
+- **References field**: Load all linked character, world, and event files from scene References
 - Chapter checkpoint (what should be achieved)
 
 **From characters/** (for POV character):
+- Load character file from scene References field: `characters/[name].md`
 - Voice notes and speech patterns
 - Current emotional state (based on prior chapters)
 - Knowledge at this point in story
 
 **From world/**:
+- Load location files from scene References: `world/world-bible.md#key-locations` or detailed location files
+- Load event files if referenced: `world/events/[event].md`
+- Load magic/tech files if referenced: `world/magic/[spell].md` or `world/world-bible.md#magic-system`
 - Setting details for chapter locations
 - Sensory details to include
 

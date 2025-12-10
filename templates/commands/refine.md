@@ -17,6 +17,10 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Improve existing draft content through targeted refinement. This is the editing/revision phase where first draft prose is elevated to polished prose.
 
+**Single Source of Truth Principle**: When checking consistency, reference authoritative information from navigation-guide.md locations. Use cross-references to verify details.
+
+**See**: [navigation-guide.md](../navigation-guide.md) for the complete information location map.
+
 ## Refinement Types
 
 | Type | Focus | When to Use |
@@ -55,13 +59,18 @@ From user input, determine scope:
 
 ### 4. Load Context
 
+**Navigation Setup**:
+- Consult `STORY_DIR/navigation-guide.md` to locate authoritative information sources
+
 **Draft content**: Read the specified chapter/scene from `drafts/`
 
 **Story context** (for consistency):
 - Prior/subsequent chapters for continuity
-- Character profiles for voice reference
-- Outline for intended beats
-- Scenes for intended emotional arcs
+- **Character profiles**: Load from `characters/[name].md` (single source of truth for character information)
+- **Outline**: Load from `outline.md` or `outline/` directory (single source for plot structure)
+- **Scenes**: Load from `scenes.md` or `scenes/` directory (single source for scene planning)
+- **World elements**: Load from `world/world-bible.md` or `world/events/` or `world/magic/` (single source for world information)
+- **Prose tracking**: Check `drafts/prose-index.md` for reference tracking
 
 ### 5. Analyze Current State
 
@@ -73,11 +82,13 @@ Before refining, assess:
 ### 6. Apply Refinement by Type
 
 #### Consistency Refinement
-- Fix timeline errors
-- Correct character knowledge issues
-- Align character behavior with profile
-- Fix setting/world rule violations
+- **Verify against single sources**: Check character behavior against `characters/[name].md`, timeline against `world/world-bible.md#timeline`, world rules against `world/world-bible.md#magic-system`
+- Fix timeline errors (reference `world/world-bible.md#historical-timeline` or `world/events/[event].md`)
+- Correct character knowledge issues (reference `characters/[name].md` for character background)
+- Align character behavior with profile (reference `characters/[name].md` for personality and traits)
+- Fix setting/world rule violations (reference `world/world-bible.md` for authoritative world rules)
 - Standardize terminology
+- **Verify cross-references**: Ensure all markdown links in prose-index.md and scene References are valid
 
 #### Plot Refinement
 - Add missing foreshadowing

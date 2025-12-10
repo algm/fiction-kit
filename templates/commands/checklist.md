@@ -48,15 +48,16 @@ You **MUST** consider the user input before proceeding (if not empty).
    Skip questions if already clear from `$ARGUMENTS`.
 
 4. **Load Story Context**: Read from STORY_DIR:
-   - premise.md: Core concept, characters, conflict
+   - **Navigation Setup**: Consult `STORY_DIR/navigation-guide.md` to locate authoritative information sources
+   - premise.md: Core concept, characters, conflict (single source for story foundation)
    - **Outline files** (load appropriate structure):
      - If split structure exists: Read outline/index.md, outline/acts.md, outline/chapters.md, outline/arcs.md
      - Otherwise: Read outline.md (if exists)
    - **Scenes files** (load appropriate structure):
      - If split structure exists: Read scenes/index.md and scenes/chXX-XX.md files
      - Otherwise: Read scenes.md (if exists)
-   - characters/ (if exists): Character profiles
-   - world/ (if exists): World-building docs
+   - characters/ (if exists): Character profiles (single source: `characters/[name].md`)
+   - world/ (if exists): World-building docs (single source: `world/world-bible.md`, `world/events/[event].md`, `world/magic/[spell].md`)
 
 5. **Generate Checklist** in the **Writing Language**:
    - Create `STORY_DIR/checklists/` directory if needed

@@ -24,6 +24,10 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Goal: Create a comprehensive story premise document that captures all foundational elements needed to develop a compelling narrative.
 
+**Single Source of Truth Principle**: The premise.md file is the single source for story foundation. Other files (characters, world, outline) will reference it via cross-references.
+
+**See**: [navigation-guide.md](../navigation-guide.md) for the complete information location map.
+
 ### Execution Steps
 
 1. **Setup**: Run `{SCRIPT}` from repo root and parse JSON for:
@@ -31,6 +35,10 @@ Goal: Create a comprehensive story premise document that captures all foundation
    - `BRANCH_NAME`: Branch name for the story
    - `PREMISE_FILE`: Path to premise.md
    - For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot'.
+   
+   **Navigation Setup**:
+   - Create `STORY_DIR/navigation-guide.md` from `.fiction/templates/navigation-guide.md` if it doesn't exist
+   - This file will serve as the master index for all story information
 
 2. **Load Writing Configuration** (CRITICAL):
    - Read `/memory/principles.md` and extract:

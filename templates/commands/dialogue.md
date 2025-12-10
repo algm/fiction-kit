@@ -17,6 +17,10 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Create sharp, distinctive dialogue that reveals character, advances plot, and includes meaningful subtext. Can generate new dialogue or refine existing exchanges.
 
+**Single Source of Truth Principle**: Character voice information lives in `characters/[name].md`. Reference these files for voice patterns.
+
+**See**: [navigation-guide.md](../navigation-guide.md) for the complete information location map.
+
 ## Execution Steps
 
 ### 1. Setup
@@ -34,8 +38,12 @@ Read `/memory/principles.md` and extract:
 
 ### 3. Load Character Voices
 
-For each character in the scene, read from `characters/`:
-- Speaking style and patterns
+**Navigation Setup**:
+- Consult `STORY_DIR/navigation-guide.md` to locate character files
+- **Single source of truth**: Character voice information lives in `characters/[name].md` only
+
+For each character in the scene, read from `characters/[name].md`:
+- Speaking style and patterns (from Dialogue & Voice section)
 - Vocabulary level
 - Verbal tics and phrases
 - What they avoid saying

@@ -26,11 +26,19 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Outline
 
+**Single Source of Truth Principle**: Outline files are the single source for plot structure. Scenes, characters, and world files will reference outline elements via cross-references.
+
+**See**: [navigation-guide.md](../navigation-guide.md) for the complete information location map.
+
 1. **Setup**: Run `{SCRIPT}` from repo root and parse JSON for:
    - `STORY_DIR`: Path to the story directory
    - `PREMISE_FILE`: Path to premise.md (use `PREMISE` field from JSON)
    - `OUTLINE`: Path to outline.md (template already copied, or `OUTLINE_INDEX` if split structure)
    - For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot'.
+   
+   **Navigation Setup**:
+   - Ensure `STORY_DIR/navigation-guide.md` exists (create from template if needed)
+   - Use navigation-guide.md to locate authoritative information sources
    
    **Determine outline structure**:
    - **Single-file**: Use outline.md for shorter stories (default, recommended for < 20 chapters)
@@ -100,11 +108,14 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Map protagonist's internal journey across acts
    - Track key relationships through the story
    - Note thematic touchpoints
+   - **Create cross-references**: Link to character files (`characters/[name].md`) for detailed arc information
+   - **Link to world events**: If arcs reference historical events, link to `world/events/[event].md` or `world/world-bible.md#timeline`
    
    **Phase 5: Subplot Integration**
    - Identify B-plots that support theme
    - Place subplot beats to complement main plot
    - Ensure subplots resolve or advance
+   - **Create cross-references**: Link to character files for subplot characters, world files for subplot settings
 
 5. **Apply Writing Language**:
    - ALL chapter summaries in the specified language
@@ -141,6 +152,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Save to STORY_DIR/outline/arcs.md (character arcs and subplots)
    - Ensure each file has Language & Style section
    - Ensure files reference each other appropriately
+   - **Create cross-references**: Link to `premise.md` for theme, `characters/[name].md` for character arcs, `world/events/[event].md` for historical context
 
 9. **Report**:
    - Output path(s) to created outline file(s)
