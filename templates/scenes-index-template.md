@@ -168,6 +168,11 @@ Following Scene-Sequel structure:
 
 Track emotional intensity across the story:
 
+<!--
+  This is a sample tension curve. Customize the peaks and valleys
+  based on your specific story structure and emotional beats.
+-->
+
 ```
 High |           *           *****
      |         * *         **   **

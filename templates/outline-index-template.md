@@ -129,6 +129,11 @@ Average chapter length: [Y words]
 
 ### Tension Graph
 
+<!--
+  This is a sample tension curve. Customize the peaks and valleys
+  based on your specific story structure and emotional beats.
+-->
+
 ```
 High |           *           *****
      |         * *         **   **

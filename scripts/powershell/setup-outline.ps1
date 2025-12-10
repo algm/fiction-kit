@@ -32,8 +32,10 @@ if ($useSplit) {
     $templateChapters = Join-Path $paths.REPO_ROOT ".fiction/templates/outline-chapters-template.md"
     $templateArcs = Join-Path $paths.REPO_ROOT ".fiction/templates/outline-arcs-template.md"
     
-    if ((Test-Path $templateIndex) -and (Test-Path $templateActs) -and 
-        (Test-Path $templateChapters) -and (Test-Path $templateArcs)) {
+    if ((Test-Path $templateIndex) -and `
+        (Test-Path $templateActs) -and `
+        (Test-Path $templateChapters) -and `
+        (Test-Path $templateArcs)) {
         Copy-Item $templateIndex $paths.OUTLINE_INDEX
         Copy-Item $templateActs $paths.OUTLINE_ACTS
         Copy-Item $templateChapters $paths.OUTLINE_CHAPTERS

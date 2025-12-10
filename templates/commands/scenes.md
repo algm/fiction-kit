@@ -27,8 +27,8 @@ You **MUST** consider the user input before proceeding (if not empty).
 1. **Setup**: Run `{SCRIPT}` from repo root and parse STORY_DIR and AVAILABLE_DOCS list. All paths must be absolute.
    
    **Determine scenes structure**:
-   - **Single-file**: Use scenes.md for shorter stories (default, < 20 scenes total)
-   - **Split structure**: Use multiple scene files for longer stories (recommended for 20+ scenes):
+   - **Single-file**: Use scenes.md for shorter stories (default, recommended for < 30 scenes total)
+   - **Split structure**: Use multiple scene files for longer stories (recommended for 30+ scenes):
      - `scenes-index.md` - Overview, tracking, pacing analysis
      - `scenes-ch01-05.md` - Scenes for chapters 1-5 (typically Act I)
      - `scenes-ch06-12.md` - Scenes for chapters 6-12 (typically Act II-A)
@@ -36,6 +36,7 @@ You **MUST** consider the user input before proceeding (if not empty).
      - `scenes-ch19-24.md` - Scenes for chapters 19-24 (typically Act III)
      - Adjust chapter groupings based on actual story structure
    
+   **Note**: Stories with 20+ chapters (outline split recommended) typically benefit from split scenes too.
    If user specifies preference with "--split" or "--single" in arguments, honor that.
    Otherwise, suggest split structure for stories with many chapters or complex scene requirements.
 

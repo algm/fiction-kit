@@ -49,7 +49,10 @@ if $SPLIT_MODE; then
     TEMPLATE_CHAPTERS="$REPO_ROOT/.fiction/templates/outline-chapters-template.md"
     TEMPLATE_ARCS="$REPO_ROOT/.fiction/templates/outline-arcs-template.md"
     
-    if [[ -f "$TEMPLATE_INDEX" ]] && [[ -f "$TEMPLATE_ACTS" ]] && [[ -f "$TEMPLATE_CHAPTERS" ]] && [[ -f "$TEMPLATE_ARCS" ]]; then
+    if [[ -f "$TEMPLATE_INDEX" ]] && \
+       [[ -f "$TEMPLATE_ACTS" ]] && \
+       [[ -f "$TEMPLATE_CHAPTERS" ]] && \
+       [[ -f "$TEMPLATE_ARCS" ]]; then
         cp "$TEMPLATE_INDEX" "$OUTLINE_INDEX"
         cp "$TEMPLATE_ACTS" "$OUTLINE_ACTS"
         cp "$TEMPLATE_CHAPTERS" "$OUTLINE_CHAPTERS"

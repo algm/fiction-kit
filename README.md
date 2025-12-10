@@ -247,16 +247,16 @@ Fiction Kit supports writing in any language. During initialization, select your
 **For long stories**, Fiction Kit supports splitting outline and scenes into multiple files for easier management:
 
 **Outline Files:**
-- **Single file** (default for < 15 chapters): `outline.md` contains everything
-- **Split structure** (recommended for 15+ chapters):
+- **Single file** (default for < 20 chapters): `outline.md` contains everything
+- **Split structure** (recommended for 20+ chapters):
   - `outline-index.md` - Summary, structure config, beats overview
   - `outline-acts.md` - Detailed act breakdowns with key scenes
   - `outline-chapters.md` - Complete chapter plan with summaries
   - `outline-arcs.md` - Character arcs and subplot tracking
 
 **Scene Files:**
-- **Single file** (default for < 20 scenes): `scenes.md` contains all scenes
-- **Split structure** (recommended for 20+ scenes):
+- **Single file** (default for < 30 scenes): `scenes.md` contains all scenes
+- **Split structure** (recommended for 30+ scenes or 20+ chapters):
   - `scenes-index.md` - Overview, tracking, pacing analysis
   - `scenes-ch01-05.md` - Scenes for chapters 1-5 (typically Act I)
   - `scenes-ch06-12.md` - Scenes for chapters 6-12 (typically Act II-A)
