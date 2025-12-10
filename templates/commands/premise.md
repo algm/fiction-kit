@@ -39,6 +39,14 @@ Goal: Create a comprehensive story premise document that captures all foundation
      - **Writing Style**: literary / commercial / genre:[X]
      - **Methodology**: snowflake / beat-sheet / discovery / custom
    - If principles.md doesn't exist, prompt user to run `/fiction.principles` first OR ask for language/style preferences now.
+   
+   - **Load Style-Specific Guidance**:
+     - If Writing Style is `literary`, read `.fiction/templates/guidance/styles/literary.md` for literary fiction best practices
+     - If Writing Style is `commercial`, read `.fiction/templates/guidance/styles/commercial.md` for commercial fiction best practices
+     - If Writing Style is `genre:fantasy`, read `.fiction/templates/guidance/genres/fantasy.md` for fantasy-specific guidance
+     - If Writing Style is `genre:thriller`, read `.fiction/templates/guidance/genres/thriller.md` for thriller-specific guidance
+     - If Writing Style is `genre:scifi`, `genre:romance`, `genre:mystery`, or `genre:horror`, apply similar genre conventions
+     - **Apply this guidance** to all premise development decisions below
 
 3. **Gather Story Information**:
    Based on user input, derive or ask for:

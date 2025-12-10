@@ -47,6 +47,14 @@ Read PREMISE_FILE for:
 - Story theme (character should explore theme)
 - Central conflict (character's relationship to it)
 
+- **Load Style-Specific Character Guidance**:
+  - If Writing Style is `literary`, read `.fiction/templates/guidance/styles/literary.md` for literary character depth requirements (complex, contradictory characters with psychological depth, ambiguous morality)
+  - If Writing Style is `commercial`, read `.fiction/templates/guidance/styles/commercial.md` for commercial character requirements (relatable, clear wants/needs, active protagonists with satisfying arcs)
+  - If Writing Style is `genre:fantasy`, read `.fiction/templates/guidance/genres/fantasy.md` for fantasy character archetypes and considerations
+  - If Writing Style is `genre:thriller`, read `.fiction/templates/guidance/genres/thriller.md` for thriller protagonist/antagonist requirements (competent, resourceful, vulnerable)
+  - If Writing Style is `genre:scifi`, `genre:romance`, `genre:mystery`, or `genre:horror`, apply similar genre character conventions
+  - **Apply this guidance** to character development throughout
+
 ### 3. Identify Character to Develop
 
 Based on user input, determine:

@@ -54,6 +54,20 @@ You **MUST** consider the user input before proceeding (if not empty).
      - Voice and narrative rules
    
    **ABORT** if Writing Language is not defined. Instruct user to run `/fiction.principles` first.
+   
+   - **Load Methodology-Specific Guidance**:
+     - If Methodology is `snowflake`, read `.fiction/templates/guidance/methodologies/snowflake.md` for Snowflake Method best practices
+     - If Methodology is `beat-sheet`, read `.fiction/templates/guidance/methodologies/beat-sheet.md` for Beat Sheet/Save the Cat guidance
+     - If Methodology is `discovery`, read `.fiction/templates/guidance/methodologies/discovery.md` for Discovery Writing approach
+     - **Apply this methodology** to outline structure decisions below
+   
+   - **Load Style-Specific Guidance** (affects outline approach):
+     - If Writing Style is `literary`, read `.fiction/templates/guidance/styles/literary.md` for literary structure preferences
+     - If Writing Style is `commercial`, read `.fiction/templates/guidance/styles/commercial.md` for commercial pacing requirements
+     - If Writing Style is `genre:fantasy`, read `.fiction/templates/guidance/genres/fantasy.md` for fantasy plot structure
+     - If Writing Style is `genre:thriller`, read `.fiction/templates/guidance/genres/thriller.md` for thriller pacing and beats
+     - If Writing Style is `genre:scifi`, `genre:romance`, `genre:mystery`, or `genre:horror`, apply similar genre conventions
+     - **Apply style guidance** to structure and pacing choices
 
 3. **Select Structure Based on Methodology**:
    
