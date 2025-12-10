@@ -15,9 +15,9 @@
 **Single Source**: This file is the authoritative source for details about this event.
 
 **Cross-References**:
-- **Timeline Entry**: [Link to world-bible.md timeline](../world-bible.md#historical-timeline)
+- **Timeline Entry**: [Link to world-bible.md timeline](../world-bible.md#timeline)
 - **Affected Characters**: [Link to characters who were involved or affected](../../characters/)
-- **Related Events**: [Links to preceding or resulting events]
+- **Related Events**: [Links to preceding or resulting events](other-event.md)
 
 ---
 

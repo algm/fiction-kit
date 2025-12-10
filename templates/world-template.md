@@ -118,10 +118,13 @@
 
 **Cross-Reference Pattern**:
 ```markdown
-<!-- In other files (scenes, characters, etc.), reference timeline like this: -->
-During [the Great Schism](world/world-bible.md#timeline) of 1523...
+<!-- From scenes/ or characters/ directories, reference timeline: -->
+During [the Great Schism](../world/world-bible.md#timeline) of 1523...
 <!-- Or link to detailed event file: -->
-She witnessed [the Plaza Massacre](world/events/plaza-massacre.md) at age twelve...
+She witnessed [the Plaza Massacre](../world/events/plaza-massacre.md) at age twelve...
+
+<!-- From within world-bible.md to event files: -->
+See [detailed event file](events/event-name.md) for full context.
 ```
 
 ### Key Historical Events

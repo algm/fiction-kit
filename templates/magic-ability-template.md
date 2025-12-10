@@ -16,8 +16,8 @@
 
 **Cross-References**:
 - **System Rules**: [Link to magic/tech system in world-bible.md](../world-bible.md#magic-system)
-- **Related Abilities**: [Links to similar or connected spells/abilities]
-- **Historical Context**: [Link to event where it was created/discovered, if applicable](../events/)
+- **Related Abilities**: [Links to similar or connected spells/abilities](related-spell.md)
+- **Historical Context**: [Link to event where it was created/discovered, if applicable](../events/discovery-event.md)
 
 ---
 

@@ -76,13 +76,21 @@ Based on user input and story needs, identify focus:
 
 Create `STORY_DIR/world/` directory if needed.
 
-**Directory Structure**:
+**Directory Structure** (creates these as needed):
 ```
 world/
-├── world-bible.md           # Main world document (single source of truth)
-├── events/                  # Detailed historical event files
+├── world-bible.md              # Main world document (single source of truth)
+├── events/                     # Detailed historical event files (optional)
 │   └── [event-name].md
-└── magic/                   # Detailed spell/ability files
+├── magic/                      # Detailed spell/ability files (optional)
+│   └── [spell-name].md
+├── cultures/                   # Detailed culture files (optional, if needed)
+│   └── [culture-name].md
+└── locations/                  # Detailed location files (optional, if needed)
+    └── [location-name].md
+```
+
+**Note**: Only create subdirectories as needed. Simple stories may only need world-bible.md. Complex world-building benefits from separate event and magic files.
     └── [spell-name].md
 ```
 

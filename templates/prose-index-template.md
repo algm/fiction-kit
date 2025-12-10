@@ -26,15 +26,18 @@ This index maintains the relationship between:
 drafts/
 ├── prose-index.md              # This file - tracking index
 ├── scenes/                     # Individual scene prose files
-│   ├── s001-opening.md
-│   ├── s002-morning-after.md
-│   ├── s003-discovery.md
+│   ├── s001-opening.md         # Scene 1 (usually Chapter 1)
+│   ├── s002-morning-after.md   # Scene 2 (usually Chapter 1)
+│   ├── s003-discovery.md       # Scene 3 (usually Chapter 1)
+│   ├── s004-next-scene.md      # Scene 4 (usually Chapter 2)
 │   └── ...
 └── chapters/                   # Optional: assembled chapters
     ├── chapter-01.md           # Assembled from scenes s001-s003
-    ├── chapter-02.md
+    ├── chapter-02.md           # Assembled from scenes s004-s007
     └── ...
 ```
+
+**Note**: Scene-to-chapter mapping is defined in your scene planning files (`scenes/ch01-05.md`, etc.). Each chapter section in the scene planning file shows which scenes belong to that chapter. This index reflects that structure.
 
 ### File Naming Convention
 
