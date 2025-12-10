@@ -28,7 +28,7 @@ Goal: Create a comprehensive story premise document that captures all foundation
 
 1. **Setup**: Run `{SCRIPT}` from repo root and parse JSON for:
    - `STORY_DIR`: Path to the story directory
-   - `STORY_BRANCH`: Branch name for the story
+   - `BRANCH_NAME`: Branch name for the story
    - `PREMISE_FILE`: Path to premise.md
    - For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot'.
 

@@ -27,8 +27,8 @@ Execution steps:
 
 1. Run `{SCRIPT}` from repo root **once**. Parse JSON for:
    - `STORY_DIR`
-   - `PREMISE_FILE`
-   - (Optionally capture `OUTLINE_FILE`, `SCENES_FILE` for future chained flows)
+   - `PREMISE_FILE` (or `PREMISE` if using paths-only mode)
+   - Construct paths from STORY_DIR: `STORY_DIR/outline.md` (or `STORY_DIR/outline/index.md` if split), `STORY_DIR/scenes.md` (or `STORY_DIR/scenes/index.md` if split)
    - If JSON parsing fails, abort and instruct user to re-run `/fiction.premise`.
 
 2. Load the premise file and any existing character/world documents. 

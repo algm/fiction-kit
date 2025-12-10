@@ -28,8 +28,8 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 1. **Setup**: Run `{SCRIPT}` from repo root and parse JSON for:
    - `STORY_DIR`: Path to the story directory
-   - `PREMISE_FILE`: Path to premise.md
-   - `OUTLINE_FILE`: Path to outline.md (template already copied)
+   - `PREMISE_FILE`: Path to premise.md (use `PREMISE` field from JSON)
+   - `OUTLINE`: Path to outline.md (template already copied, or `OUTLINE_INDEX` if split structure)
    - For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot'.
    
    **Determine outline structure**:
@@ -130,7 +130,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 8. **Write Output**:
    
    **For single-file structure**:
-   - Save completed outline to OUTLINE_FILE (outline.md)
+   - Save completed outline to `STORY_DIR/outline.md` (use `OUTLINE` field from JSON)
    - Ensure Language & Style section is at the top
    
    **For split structure**:

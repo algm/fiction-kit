@@ -30,7 +30,7 @@ Generate a complete, polished chapter draft by combining scene-level planning wi
 
 Run `{SCRIPT}` from repo root and parse JSON for:
 - `STORY_DIR`: Path to story directory
-- `SCENES_FILE`: Path to scenes.md
+- Construct scenes path from `STORY_DIR/scenes.md` (or `STORY_DIR/scenes/index.md` if split structure exists)
 
 ### 2. Load Language & Style Configuration (CRITICAL)
 
