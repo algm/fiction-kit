@@ -90,46 +90,48 @@ Break chapters into actionable scenes:
 - POV character for each scene
 - Emotional beats
 - Location and time
+- **Cross-references** to characters, world elements, and events
+
+**New: Prose Tracking Index**
+
+When scenes are created, Fiction Kit automatically sets up:
+- `drafts/prose-index.md` - Master index linking scene planning to prose files
+- `drafts/scenes/` directory - Individual prose files for each scene
+- Reference tracking system - Records which sources informed each scene
+
+This enables **scene-by-scene drafting** for manageable long-form writing.
 
 ### Phase 4: Writing (Drafting)
 
 With structure in place, draft with confidence:
 
-**Chapter Drafting**
+**Scene-by-Scene Drafting (`/fiction.draft`)**
 
-Fiction Kit offers two complementary drafting commands:
+Fiction Kit's new drafting workflow writes **one scene at a time** in separate files:
 
-| Command | Use When | Output |
-|---------|----------|--------|
-| `/fiction.chapter` | You want to focus on **one chapter at a time** with deep quality checks | Single polished chapter |
-| `/fiction.draft` | You want to **batch-process all scenes** into a complete first draft | All chapters sequentially |
+- Each scene gets its own prose file: `drafts/scenes/s001-opening.md`, `s002-next-scene.md`, etc.
+- The prose-index.md tracks: Which scenes are drafted, where prose files are located, what references were consulted, word counts and status
+- This approach keeps files manageable for long novels
 
-**`/fiction.chapter`** (Focused Writing):
-- Generates a single chapter with pre-writing checklist
-- Loads deep context for POV character, setting, and continuity
-- Includes quality checks (word count, scene coverage, voice consistency)
-- Suggests `/fiction.refine` or `/fiction.review` as next steps
-- Best for: iterative quality-focused writing, revising specific chapters
+**Why Scene-by-Scene?**
+- **Manageable file sizes**: No overwhelming 100k+ word files
+- **Focused writing sessions**: Draft one scene, mark it complete, move to next
+- **Easy revision**: Revise individual scenes without scrolling through entire chapters
+- **Clear progress tracking**: Visual checklist of drafted scenes
+- **Reference clarity**: Each scene file lists exactly which sources informed it
 
-**`/fiction.draft`** (Batch Processing):
-- Processes all scenes in scenes.md sequentially
-- Writes chapter-by-chapter, scene-by-scene
-- Verifies checklists before starting
-- Tracks progress and word counts across entire manuscript
-- Best for: NaNoWriMo-style sprints, completing first drafts quickly
+**Drafting Workflow:**
+1. Scene planning exists in `scenes/ch01-05.md` with metadata (goals, conflicts, references)
+2. Run `/fiction.draft` to write prose for scenes
+3. Each scene creates `drafts/scenes/s###-name.md` with clean narrative prose
+4. `drafts/prose-index.md` is updated automatically with progress and references
+5. Mark scenes complete in scenes planning files
 
-Both commands write prose that adheres to:
-- Established voice and style
-- Character voices from profiles
-- World rules and details
-- Scene goals from the breakdown
-
-**Dialogue Crafting (`/fiction.dialogue`)**
-
-Create conversations that:
-- Sound distinct for each character
-- Advance plot or reveal character
-- Match the established tone
+**Cross-Reference System:**
+- Scene planning links to characters: `[Maria](../characters/maria.md)`
+- Scene planning links to world: `[Plaza](../world/world-bible.md#key-locations)`
+- Prose files list references consulted (but prose itself has NO links - clean narrative)
+- Prose-index tracks which sources informed each scene
 
 ### Phase 5: Refinement (Quality)
 
@@ -143,11 +145,110 @@ Analyze for issues:
 - Timeline verification
 - World-building contradictions
 - Pacing analysis
+- **NEW: Cross-reference validation** - verifies all links between files are valid
+- **NEW: Single source of truth check** - ensures no information duplication
 
 **Iterative Refinement (`/fiction.refine`)**
 
 Improve existing content:
 - Strengthen weak scenes
+- Enhance character voices
+- Add sensory details
+- Improve pacing
+
+---
+
+## The Single Source of Truth Principle
+
+Fiction Kit implements a rigorous information architecture to prevent contradictions and maintain consistency:
+
+### Core Concept
+
+**Each piece of information exists in exactly ONE authoritative location.**
+
+Other files that need that information **reference it via markdown links** rather than duplicating it.
+
+### Why This Matters
+
+For long-form fiction (novels, series), tracking information across hundreds of pages is challenging:
+- Did you change the protagonist's age? Check one file, not five.
+- Did you update the magic system rules? They live in one place.
+- When did that historical event happen? Check the timeline, not scattered notes.
+
+### How It Works
+
+**Information Location Map** (`navigation-guide.md`):
+- Lists every type of information (characters, world, timeline, etc.)
+- Shows which file contains the authoritative version
+- Provides cross-reference patterns for linking
+
+**Example:**
+```markdown
+<!-- Character backstory in characters/maria.md -->
+She witnessed [the Plaza Massacre](../world/events/plaza-massacre.md) at age 12.
+
+<!-- World timeline in world/world-bible.md -->
+| 1935 | [Plaza Massacre](events/plaza-massacre.md) | Government crackdown |
+
+<!-- Detailed event in world/events/plaza-massacre.md -->
+# Event: Plaza Massacre
+[Full details here - SINGLE SOURCE OF TRUTH]
+
+<!-- Scene planning in scenes/ch01-05.md -->
+- **References**: [Maria](../characters/maria.md), [Plaza Massacre](../world/events/plaza-massacre.md)
+```
+
+All files reference the same authoritative event details. Change it once, all references point to the updated version.
+
+### Cross-Reference Categories
+
+**Characters** (`characters/[name].md`):
+- Link to: world locations, historical events, other characters, magic/tech they use
+- Referenced from: scenes, other characters, prose-index
+
+**World-Building** (`world/world-bible.md`):
+- Main document for: geography, timeline, magic system, organizations
+- Detailed files: `world/events/[event].md`, `world/magic/[spell].md`
+- Referenced from: characters, scenes, prose-index
+
+**Scene Planning** (`scenes/ch##-##.md`):
+- References: characters, locations, events, magic/tech
+- Contains: scene metadata (NOT prose)
+- Links forward to: prose files in drafts/scenes/
+
+**Prose** (`drafts/scenes/s###-name.md`):
+- Contains: clean narrative prose (NO inline links)
+- Metadata section: lists references consulted
+- Tracked in: `drafts/prose-index.md`
+
+**Prose Index** (`drafts/prose-index.md`):
+- Maps: scene planning → prose files
+- Tracks: which references were consulted for each scene
+- Shows: progress, word counts, revision status
+
+### No Links in Prose
+
+**Important Rule**: The actual narrative prose should be clean - no markdown links.
+
+❌ **Wrong** (prose with links):
+```markdown
+Maria ran through [the Plaza Mayor](../world/world-bible.md#plaza-mayor) 
+as she remembered [the massacre](../world/events/plaza-massacre.md).
+```
+
+✅ **Correct** (clean prose):
+```markdown
+Maria ran through the Plaza Mayor as she remembered the massacre.
+```
+
+Links live in:
+- Scene planning (References field)
+- Prose file metadata (References Consulted section)  
+- Prose-index.md (References column)
+
+This separation keeps the narrative readable while maintaining connection to source materials.
+
+---
 - Deepen character motivations
 - Fix consistency issues
 
