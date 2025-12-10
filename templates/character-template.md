@@ -7,6 +7,30 @@
 
 ---
 
+## Navigation
+
+**Purpose**: This file is the **single source of truth** for this character.
+
+**Quick Links**:
+- [Basic Information](#basic-information) - Identity and appearance
+- [Psychology](#psychology) - Wound, lie, truth, and ghost
+- [Motivation & Goals](#motivation--goals) - What they want and need
+- [Character Arc](#character-arc) - How they change
+- [Background](#background) - History and life events
+- [Relationships](#relationships) - Connections to other characters
+
+**Cross-Reference From Other Files**:
+```markdown
+<!-- In scenes, world files, or other character files: -->
+[Character Name](characters/character-name.md)
+[Character's wound](characters/character-name.md#the-wound)
+[Character's dialogue style](characters/character-name.md#dialogue--voice)
+```
+
+**See Also**: [navigation-guide.md](../navigation-guide.md) for the complete story information map
+
+---
+
 ## Language & Voice Configuration
 
 | Setting | Value |
@@ -79,6 +103,10 @@
 
 [The specific event/memory that haunts them and reinforces the lie]
 
+**Link to World Event** (if applicable): [If the ghost involves a historical event, link to it](../world/events/event-name.md) or [world timeline](../world/world-bible.md#timeline)
+
+**Link to Other Character** (if applicable): [If the ghost involves another character, link to them](other-character.md)
+
 ---
 
 ## Motivation & Goals
@@ -141,30 +169,34 @@
 
 ### Childhood & Family
 
-- **Birthplace**: [Where they were born]
-- **Family Structure**: [Parents, siblings, etc.]
+- **Birthplace**: [Where they were born - link to location if significant](../world/world-bible.md#key-locations)
+- **Family Structure**: [Parents, siblings, etc. - link to other character files if they exist](family-member.md)
 - **Upbringing**: [How they were raised]
-- **Key Childhood Memory**: [Formative experience]
+- **Key Childhood Memory**: [Formative experience - link to world event if relevant](../world/events/event-name.md)
 - **Relationship with Family Now**: [Current status]
 
 ### Education & Training
 
 - **Formal Education**: [Schooling level]
-- **Special Skills Learned**: [From education or training]
-- **Mentors**: [Who taught them what they know]
+- **Special Skills Learned**: [From education or training - link to magic/tech abilities if relevant](../world/magic/ability-name.md)
+- **Mentors**: [Who taught them what they know - link if character file exists](mentor-character.md)
 
 ### Career/Occupation
 
 - **Current Job**: [What they do]
 - **Career History**: [Previous jobs/roles]
-- **Skills**: [Professional abilities]
-- **Work Relationships**: [How they interact with colleagues]
+- **Skills**: [Professional abilities - link to magic/tech if relevant](../world/world-bible.md#magic-system)
+- **Work Relationships**: [How they interact with colleagues - link to other characters](colleague.md)
 
 ### Key Life Events
 
-1. [Age X] - [Event that shaped them]
+**Note**: Link to world events or other characters as relevant to establish connections.
+
+1. [Age X] - [Event that shaped them - link if world event](../world/events/event-name.md) or [link to character involved](other-character.md)
 2. [Age X] - [Event that shaped them]
 3. [Age X] - [Event that shaped them - this could be the wound]
+
+**Timeline Cross-Reference**: [If this character's life events tie to major historical events, link to world timeline](../world/world-bible.md#timeline)
 
 ---
 
@@ -172,11 +204,20 @@
 
 ### Key Relationships
 
-| Character | Relationship | Dynamic | Evolution in Story |
-|-----------|--------------|---------|-------------------|
-| [Name] | [Role - friend, enemy, lover, etc.] | [How they interact] | [How it changes] |
-| [Name] | [Role] | [Dynamic] | [Evolution] |
-| [Name] | [Role] | [Dynamic] | [Evolution] |
+**Note**: Link to other character files to maintain cross-references and avoid duplicating information.
+
+| Character | Relationship | Dynamic | Evolution in Story | Link |
+|-----------|--------------|---------|-------------------|------|
+| [Name] | [Role - friend, enemy, lover, etc.] | [How they interact] | [How it changes] | [Link to character file](character-name.md) |
+| [Name] | [Role] | [Dynamic] | [Evolution] | [Link](character-name.md) |
+| [Name] | [Role] | [Dynamic] | [Evolution] | [Link](character-name.md) |
+
+**Cross-Reference Pattern**:
+```markdown
+<!-- From this character's perspective, describe the relationship here -->
+<!-- In the OTHER character's file, describe from their perspective -->
+<!-- This avoids duplication while maintaining both viewpoints -->
+```
 
 ### Relationship Patterns
 
@@ -205,7 +246,7 @@
 
 ### Living Situation
 
-- **Home**: [Where and how they live]
+- **Home**: [Where and how they live - link to location if significant](../world/world-bible.md#key-locations)
 - **Possessions**: [Important belongings]
 - **Financial Status**: [Economic situation]
 
@@ -215,21 +256,23 @@
 
 ### First Appearance
 
-- **Chapter/Scene**: [Where they first appear]
+- **Chapter/Scene**: [Where they first appear - link to scene planning](../scenes/ch01-05.md#scene-X) or [prose file](../drafts/scenes/s001-opening.md)
 - **Introduction Method**: [How reader meets them]
 - **First Line (if dialogue)**: [Their first words]
 
 ### Key Scenes
 
-1. [Chapter X] - [Scene description and significance]
-2. [Chapter X] - [Scene description and significance]
-3. [Chapter X] - [Scene description and significance]
+**Note**: Link to scene planning and prose files to track where this character appears and is developed.
+
+1. [Chapter X] - [Scene description and significance - link to scene](../scenes/ch01-05.md#scene-X) or [prose](../drafts/scenes/s001-scene-name.md)
+2. [Chapter X] - [Scene description and significance - link]
+3. [Chapter X] - [Scene description and significance - link]
 
 ### Character Function
 
 - **Plot Function**: [What role they play in the plot]
-- **Thematic Function**: [What theme they represent/explore]
-- **Relationship Function**: [How they affect protagonist's journey]
+- **Thematic Function**: [What theme they represent/explore - link to premise](../premise.md#theme)
+- **Relationship Function**: [How they affect protagonist's journey - link to protagonist](protagonist.md)
 
 ---
 

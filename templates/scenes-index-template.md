@@ -5,6 +5,10 @@
 
 **Organization**: Scenes are split into separate files by chapter groups to manage long scene lists efficiently.
 
+**See Also**: 
+- [prose-index.md](../drafts/prose-index.md) - Tracks which scenes have been written into prose
+- [navigation-guide.md](../navigation-guide.md) - Complete information location map
+
 ---
 
 ## Scene File Structure
@@ -44,7 +48,21 @@ All scenes in the detailed files follow this format:
   - **Outcome**: [Yes-but / No-and / Yes / No]
   - **Summary**: [2-3 sentence description]
   - **Emotional beat**: [Reader emotion target]
+  - **References**: [Character](../characters/name.md), [Location](../world/world-bible.md#key-locations), [Event](../world/events/event.md)
 ```
+
+**New: References Field**: List key references this scene will need:
+- Characters involved (link to character files)
+- Locations used (link to world-bible.md locations)
+- Historical events referenced (link to event files or timeline)
+- Magic/tech used (link to magic system or specific abilities)
+- Research needed (link to research files)
+
+**Purpose**: The References field helps:
+1. Track what information is needed before writing
+2. Ensure consistency with source materials
+3. Populate the prose-index.md when drafting
+4. Enable `/fiction.review` to validate references
 
 ---
 
@@ -211,6 +229,12 @@ Track variety across acts to ensure pacing diversity:
 ---
 
 ## Drafting Strategy
+
+**Important**: When drafting prose, update [prose-index.md](../drafts/prose-index.md) to track:
+- Which scenes have been written
+- Where the prose files are located (`drafts/scenes/s###-name.md`)
+- What references were consulted
+- Word counts and revision status
 
 Choose an approach based on your preferences:
 
