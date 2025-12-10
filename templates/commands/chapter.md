@@ -55,14 +55,17 @@ If not specified, suggest starting with the next undrafted chapter.
 
 ### 4. Load Chapter Context
 
-**From outline.md**:
-- Chapter goal and emotional arc
-- Key beats this chapter must hit
-- POV assignment
-- Word target
+**From outline files** (load appropriate structure):
+- **If split structure exists**:
+  - Read outline/chapters.md for chapter goal, emotional arc, POV, word target
+  - Read outline/arcs.md for character arc context
+- **Otherwise**: Read outline.md for chapter details
 
-**From scenes.md**:
-- All scenes for this chapter
+**From scenes files** (load appropriate structure):
+- **If split structure exists**:
+  - Read scenes/index.md for overview
+  - Read appropriate scenes/chXX-XX.md file containing this chapter
+- **Otherwise**: Read scenes.md for all scenes for this chapter
 - Scene details: POV, type, goal, conflict, outcome, emotional beat
 - Chapter checkpoint (what should be achieved)
 
@@ -166,7 +169,7 @@ After generation, verify:
 
 Save to: `STORY_DIR/drafts/chapter-[N].md`
 
-Update scenes.md: Mark chapter scenes as drafted [X]
+Update scenes: Mark chapter scenes as drafted [X] in the appropriate scenes file (scenes.md or scenes/chXX-XX.md)
 
 ### 9. Report
 

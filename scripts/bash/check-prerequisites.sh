@@ -110,17 +110,40 @@ if [[ ! -d "$STORY_DIR" ]]; then
     exit 1
 fi
 
-if [[ ! -f "$OUTLINE" ]]; then
-    echo "ERROR: outline.md not found in $STORY_DIR" >&2
+# Check for outline - accept either single file or split structure
+OUTLINE_EXISTS=false
+if [[ -f "$OUTLINE_INDEX" ]]; then
+    # Split structure detected
+    OUTLINE_EXISTS=true
+    OUTLINE_SPLIT=true
+elif [[ -f "$OUTLINE" ]]; then
+    # Single file structure
+    OUTLINE_EXISTS=true
+    OUTLINE_SPLIT=false
+else
+    echo "ERROR: No outline found in $STORY_DIR" >&2
     echo "Run /fiction.outline first to create the story outline." >&2
     exit 1
 fi
 
-# Check for scenes.md if required
-if $REQUIRE_SCENES && [[ ! -f "$SCENES" ]]; then
-    echo "ERROR: scenes.md not found in $STORY_DIR" >&2
-    echo "Run /fiction.scenes first to create the scene breakdown." >&2
-    exit 1
+# Check for scenes.md if required - accept either single file or split structure
+if $REQUIRE_SCENES; then
+    SCENES_EXISTS=false
+    if [[ -f "$SCENES_INDEX" ]]; then
+        # Split structure detected
+        SCENES_EXISTS=true
+        SCENES_SPLIT=true
+    elif [[ -f "$SCENES" ]]; then
+        # Single file structure
+        SCENES_EXISTS=true
+        SCENES_SPLIT=false
+    fi
+    
+    if ! $SCENES_EXISTS; then
+        echo "ERROR: No scenes found in $STORY_DIR" >&2
+        echo "Run /fiction.scenes first to create the scene breakdown." >&2
+        exit 1
+    fi
 fi
 
 # Build list of available documents
@@ -150,9 +173,19 @@ if [[ -d "$DRAFTS_DIR" ]] && [[ -n "$(ls -A "$DRAFTS_DIR" 2>/dev/null)" ]]; then
     docs+=("drafts/")
 fi
 
-# Include scenes.md if requested and it exists
-if $INCLUDE_SCENES && [[ -f "$SCENES" ]]; then
-    docs+=("scenes.md")
+# Include scenes if requested and they exist
+if $INCLUDE_SCENES; then
+    if [[ -f "$SCENES_INDEX" ]]; then
+        docs+=("scenes/index.md")
+        # Also note that split structure exists
+        for scene_file in "$STORY_DIR"/scenes/ch*.md; do
+            if [[ -f "$scene_file" ]]; then
+                docs+=("scenes/$(basename "$scene_file")")
+            fi
+        done
+    elif [[ -f "$SCENES" ]]; then
+        docs+=("scenes.md")
+    fi
 fi
 
 # Output results

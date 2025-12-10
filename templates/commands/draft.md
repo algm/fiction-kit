@@ -32,8 +32,12 @@ You **MUST** consider the user input before proceeding (if not empty).
      - Automatically proceed to step 3
 
 3. Load and analyze the story context:
-   - **REQUIRED**: Read scenes.md for the complete scene list
-   - **REQUIRED**: Read outline.md for structure, beats, and pacing
+   - **REQUIRED - Scenes**: Read scene information:
+     - **If split structure exists**: Read scenes/index.md for overview, then relevant scenes/chXX-XX.md file(s)
+     - **Otherwise**: Read scenes.md for complete scene list
+   - **REQUIRED - Outline**: Read outline information:
+     - **If split structure exists**: Read outline/index.md, outline/chapters.md, and outline/arcs.md
+     - **Otherwise**: Read outline.md for structure, beats, and pacing
    - **REQUIRED**: Read premise.md for theme, characters overview, tone, **AND Language & Style Configuration**
    - **REQUIRED**: Read /memory/principles.md for voice and style rules, **especially Writing Language & Style section**
    - **IF EXISTS**: Read characters/ for character voices and details
@@ -52,11 +56,13 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Each chapter will be saved as `chapter-XX.md`
    - Maintain draft metadata (word count, status, last edited)
 
-5. Parse scenes.md structure and extract:
+5. Parse scenes structure and extract:
    - **Chapters**: Ordered list with goals and POV
-   - **Scenes per chapter**: Scene details with all metadata
+   - **Scenes per chapter**: Scene details with all metadata (from appropriate file)
    - **Pacing notes**: Tension levels and emotional beats
    - **Word targets**: Per-chapter word count goals
+   
+   **Note**: If using split structure, load scenes from the appropriate scenes-chXX-XX.md file(s) as needed for each chapter.
 
 6. Execute drafting following the scene plan:
    - **Chapter-by-chapter**: Complete each chapter before moving to the next
@@ -99,7 +105,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Report progress after each completed chapter
    - Track word count vs. target
    - Note any scenes that diverged from plan (for later review)
-   - **IMPORTANT**: Mark completed scenes with [X] in scenes.md
+   - **IMPORTANT**: Mark completed scenes with [X] in the appropriate scenes file (scenes.md or scenes/chXX-XX.md)
 
 10. Completion validation:
     - Verify all scenes are drafted
@@ -143,5 +149,7 @@ Last Updated: YYYY-MM-DD
 -->
 ```
 
-Note: This command assumes a complete scene breakdown exists in scenes.md. If scenes are incomplete or missing, suggest running `/fiction.scenes` first.
+Note: This command assumes a complete scene breakdown exists. If scenes are incomplete or missing, suggest running `/fiction.scenes` first.
+
+**File Location Note**: The command will automatically detect whether the story uses single-file (scenes.md) or split structure (scenes/index.md + scenes/chXX-XX.md files) and read from the appropriate files.
 

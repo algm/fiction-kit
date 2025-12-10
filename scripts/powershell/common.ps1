@@ -114,28 +114,35 @@ function Get-StoryPathsEnv {
     $storyDir = Get-StoryDir -RepoRoot $repoRoot -Branch $currentBranch
     
     [PSCustomObject]@{
-        REPO_ROOT       = $repoRoot
-        CURRENT_BRANCH  = $currentBranch
-        HAS_GIT         = $hasGit
-        STORY_DIR       = $storyDir
-        PREMISE         = Join-Path $storyDir 'premise.md'
-        OUTLINE         = Join-Path $storyDir 'outline.md'
-        SCENES          = Join-Path $storyDir 'scenes.md'
-        CHARACTERS_DIR  = Join-Path $storyDir 'characters'
-        WORLD_DIR       = Join-Path $storyDir 'world'
-        DRAFTS_DIR      = Join-Path $storyDir 'drafts'
-        RESEARCH_DIR    = Join-Path $storyDir 'research'
-        CHECKLISTS_DIR  = Join-Path $storyDir 'checklists'
-        SYNOPSIS        = Join-Path $storyDir 'synopsis.md'
+        REPO_ROOT         = $repoRoot
+        CURRENT_BRANCH    = $currentBranch
+        HAS_GIT           = $hasGit
+        STORY_DIR         = $storyDir
+        PREMISE           = Join-Path $storyDir 'premise.md'
+        OUTLINE           = Join-Path $storyDir 'outline.md'
+        OUTLINE_DIR       = Join-Path $storyDir 'outline'
+        OUTLINE_INDEX     = Join-Path $storyDir 'outline/index.md'
+        OUTLINE_ACTS      = Join-Path $storyDir 'outline/acts.md'
+        OUTLINE_CHAPTERS  = Join-Path $storyDir 'outline/chapters.md'
+        OUTLINE_ARCS      = Join-Path $storyDir 'outline/arcs.md'
+        SCENES            = Join-Path $storyDir 'scenes.md'
+        SCENES_DIR        = Join-Path $storyDir 'scenes'
+        SCENES_INDEX      = Join-Path $storyDir 'scenes/index.md'
+        CHARACTERS_DIR    = Join-Path $storyDir 'characters'
+        WORLD_DIR         = Join-Path $storyDir 'world'
+        DRAFTS_DIR        = Join-Path $storyDir 'drafts'
+        RESEARCH_DIR      = Join-Path $storyDir 'research'
+        CHECKLISTS_DIR    = Join-Path $storyDir 'checklists'
+        SYNOPSIS          = Join-Path $storyDir 'synopsis.md'
         # Legacy aliases for backward compatibility
-        FEATURE_DIR     = $storyDir
-        FEATURE_SPEC    = Join-Path $storyDir 'premise.md'
-        IMPL_PLAN       = Join-Path $storyDir 'outline.md'
-        TASKS           = Join-Path $storyDir 'scenes.md'
-        RESEARCH        = Join-Path $storyDir 'research'
-        DATA_MODEL      = Join-Path $storyDir 'world/world-bible.md'
-        QUICKSTART      = Join-Path $storyDir 'synopsis.md'
-        CONTRACTS_DIR   = Join-Path $storyDir 'world'
+        FEATURE_DIR       = $storyDir
+        FEATURE_SPEC      = Join-Path $storyDir 'premise.md'
+        IMPL_PLAN         = Join-Path $storyDir 'outline.md'
+        TASKS             = Join-Path $storyDir 'scenes.md'
+        RESEARCH          = Join-Path $storyDir 'research'
+        DATA_MODEL        = Join-Path $storyDir 'world/world-bible.md'
+        QUICKSTART        = Join-Path $storyDir 'synopsis.md'
+        CONTRACTS_DIR     = Join-Path $storyDir 'world'
     }
 }
 

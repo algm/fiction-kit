@@ -31,6 +31,17 @@ You **MUST** consider the user input before proceeding (if not empty).
    - `PREMISE_FILE`: Path to premise.md
    - `OUTLINE_FILE`: Path to outline.md (template already copied)
    - For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot'.
+   
+   **Determine outline structure**:
+   - **Single-file**: Use outline.md for shorter stories (default, recommended for < 20 chapters)
+   - **Split structure**: Use multiple outline files in `outline/` directory for longer stories (recommended for 20+ chapters):
+     - `outline/index.md` - Summary, structure config, beats overview
+     - `outline/acts.md` - Detailed act breakdowns with key scenes
+     - `outline/chapters.md` - Complete chapter plan with summaries
+     - `outline/arcs.md` - Character arcs and subplot tracking
+   
+   If user specifies preference with "--split" or "--single" in arguments, honor that.
+   Otherwise, suggest split structure for stories with 20+ chapters.
 
 2. **Load Context** (CRITICAL - Language & Style):
    - Read PREMISE_FILE and extract:
@@ -103,11 +114,23 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Add story-specific context for future commands
 
 8. **Write Output**:
-   - Save completed outline to OUTLINE_FILE
+   
+   **For single-file structure**:
+   - Save completed outline to OUTLINE_FILE (outline.md)
    - Ensure Language & Style section is at the top
+   
+   **For split structure**:
+   - Create STORY_DIR/outline/ directory if needed
+   - Save to STORY_DIR/outline/index.md (summary and overview)
+   - Save to STORY_DIR/outline/acts.md (detailed act breakdowns)
+   - Save to STORY_DIR/outline/chapters.md (chapter plan)
+   - Save to STORY_DIR/outline/arcs.md (character arcs and subplots)
+   - Ensure each file has Language & Style section
+   - Ensure files reference each other appropriately
 
 9. **Report**:
-   - Output path to created outline.md
+   - Output path(s) to created outline file(s)
+   - Note whether using single-file or split structure
    - Summary: structure type, chapter count, estimated word count
    - List any `[NEEDS DEVELOPMENT]` items
    - Suggest next command: `/fiction.scenes`
