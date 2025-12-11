@@ -116,7 +116,7 @@ if ($BranchName.Length -gt 244) {
 # Create git branch if in a git repository
 if ($HasGit) {
     # Check if branch already exists
-    $branchExists = git show-ref --verify --quiet "refs/heads/$BranchName" 2>$null
+    git show-ref --verify --quiet "refs/heads/$BranchName" 2>$null
     if ($LASTEXITCODE -eq 0) {
         Write-Warning "[fiction] Branch '$BranchName' already exists. Using existing branch."
         git checkout $BranchName 2>$null
