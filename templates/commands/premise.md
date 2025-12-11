@@ -52,7 +52,7 @@ Goal: Create a comprehensive story premise document that captures all foundation
 
 1. **Setup**: Run `{SCRIPT}` from repo root and parse JSON for:
    - `STORY_DIR`: Path to the story directory
-   - `BRANCH_NAME`: Generated story slug used for folder naming (git branch creation is skipped)
+   - `BRANCH_NAME`: Generated story slug used for folder naming and git branch
    - `PREMISE_FILE`: Path to premise.md
    - For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot'.
    
