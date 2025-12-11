@@ -279,9 +279,23 @@ if [ ${#BRANCH_NAME} -gt $MAX_BRANCH_LENGTH ]; then
     >&2 echo "[fiction] Truncated to: $BRANCH_NAME (${#BRANCH_NAME} bytes)"
 fi
 
-# Branch creation intentionally skipped. We only use the name for directory structure and FICTION_STORY.
+# Create git branch if in a git repository
 if [ "$HAS_GIT" = true ]; then
-    >&2 echo "[fiction] Info: Not creating a git branch; using \"$BRANCH_NAME\" only for story folder naming."
+    # Check if branch already exists
+    if git show-ref --verify --quiet "refs/heads/$BRANCH_NAME"; then
+        >&2 echo "[fiction] Warning: Branch '$BRANCH_NAME' already exists. Using existing branch."
+        git checkout "$BRANCH_NAME" 2>/dev/null || {
+            >&2 echo "[fiction] Error: Failed to checkout existing branch '$BRANCH_NAME'"
+            exit 1
+        }
+    else
+        # Create and checkout new branch
+        git checkout -b "$BRANCH_NAME" 2>/dev/null || {
+            >&2 echo "[fiction] Error: Failed to create branch '$BRANCH_NAME'"
+            exit 1
+        }
+        >&2 echo "[fiction] Created and checked out new branch: $BRANCH_NAME"
+    fi
 else
     >&2 echo "[fiction] Warning: Git repository not detected; skipped branch creation for $BRANCH_NAME (expected)."
 fi

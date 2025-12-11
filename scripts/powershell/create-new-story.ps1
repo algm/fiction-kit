@@ -113,9 +113,26 @@ if ($BranchName.Length -gt 244) {
     $BranchName = "$StoryNum-$BranchSuffix"
 }
 
-# Branch creation intentionally skipped. We only use the name for directory structure and FICTION_STORY.
+# Create git branch if in a git repository
 if ($HasGit) {
-    Write-Warning "[fiction] Info: Not creating a git branch; using '$BranchName' only for story folder naming."
+    # Check if branch already exists
+    git show-ref --verify --quiet "refs/heads/$BranchName" 2>$null
+    if ($LASTEXITCODE -eq 0) {
+        Write-Warning "[fiction] Branch '$BranchName' already exists. Using existing branch."
+        git checkout $BranchName 2>$null
+        if ($LASTEXITCODE -ne 0) {
+            Write-Error "[fiction] Error: Failed to checkout existing branch '$BranchName'"
+            exit 1
+        }
+    } else {
+        # Create and checkout new branch
+        git checkout -b $BranchName 2>$null
+        if ($LASTEXITCODE -ne 0) {
+            Write-Error "[fiction] Error: Failed to create branch '$BranchName'"
+            exit 1
+        }
+        Write-Warning "[fiction] Created and checked out new branch: $BranchName"
+    }
 } else {
     Write-Warning "[fiction] Git not detected; skipped branch creation for $BranchName (expected)."
 }
