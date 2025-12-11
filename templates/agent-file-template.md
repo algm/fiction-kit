@@ -2,55 +2,28 @@
 
 Auto-generated from story outline. Last updated: [DATE]
 
-## Critical Writing Rules
+## Essential References
 
-### Single Source of Truth Principle
+**Before ANY prose generation:**
+1. Read `/memory/principles.md` for language, style, voice (MANDATORY - ABORT if language undefined)
+2. Check `navigation-guide.md` to locate information (never guess locations)
 
-**Each piece of story information exists in exactly ONE authoritative location.** Other files reference it via markdown links.
+**Key files:**
+- `/memory/principles.md` - Writing rules, language, style
+- `navigation-guide.md` - Information location map
+- `premise.md` - Story concept, theme
+- `characters/` - Character profiles  
+- `world/` - World-building
+- `outline/` - Plot structure
+- `scenes/` - Scene breakdowns
 
-- **Character information** → `characters/[name].md` (single source of truth)
-- **World-building** → `world/` directory (single source of truth)
-- **Scene planning** → `scenes.md` or `scenes/` directory (single source of truth)
-- **Plot structure** → `outline.md` or `outline/` directory (single source of truth)
-- **Story foundation** → `premise.md` (single source of truth)
-- **Writing principles** → `/memory/principles.md` (single source of truth)
+## Core Rules
 
-**See**: `navigation-guide.md` in the story directory for the complete information location map.
+**Single Source of Truth**: Each piece of information exists in ONE location. Reference via markdown links, never duplicate.
 
-### Critical Restriction: Do Not Develop Outline or Chapter Structure
+**Cross-references**: Use `[text](path/file.md)` in planning files. Keep prose clean (no links in narrative).
 
-**IMPORTANT**: Most commands MUST NOT develop, modify, or create:
-- Outline structure (acts, beats, chapter plans)
-- Chapter breakdowns or chapter summaries
-- Scene planning or scene breakdowns
-- Plot structure or story beats
-
-**Only the following commands are authorized to develop outline and chapter information:**
-- `/fiction.outline` - For creating and modifying story outlines
-- `/fiction.scenes` - For creating and modifying scene breakdowns
-
-**If outline or chapter development is needed**, direct the user to use the appropriate command (`/fiction.outline` or `/fiction.scenes`) instead.
-
-### Writing Language & Style (MANDATORY)
-
-**ALWAYS** read `/memory/principles.md` before generating any prose. Extract:
-- **Writing Language**: ALL prose must be in this language
-- **Regional Variant**: For spelling, idioms, cultural references
-- **Writing Style**: literary / commercial / genre:[X]
-- **Voice settings**: POV, tense, narrative distance, prose style
-- **Things to ALWAYS/NEVER do**
-
-**ABORT if Writing Language not defined** in principles.md.
-
-### Cross-Reference System
-
-When referencing information from other files:
-- Use markdown links: `[link text](path/to/file.md)`
-- Link to authoritative sources (single source of truth)
-- Never duplicate information - reference it via links instead
-- Verify all cross-references are valid (no broken links)
-
-**In prose files**: Write clean narrative WITHOUT cross-reference links in the prose itself.
+**Outline restriction**: Most commands cannot modify outline/chapter/scene structure. Only `/fiction.outline` and `/fiction.scenes` can.
 
 ## Active Technologies
 
